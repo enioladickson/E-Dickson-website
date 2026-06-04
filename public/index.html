@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E~Dickson | Web Developer & UI Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #020b10;
+  --surface: #071520;
+  --surface2: #0c1f2e;
+  --accent: #00ffc8;
+  --accent2: #0084ff;
+  --text: #e8f4f0;
+  --muted: #7a9aaa;
+  --border: rgba(0,255,200,0.12);
+  --glow: 0 0 30px rgba(0,255,200,0.15);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 5%;
+  background: rgba(2,11,16,0.88); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 900;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a { color: var(--muted); text-decoration: none; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.3s; }
+.nav-links a:hover { color: var(--accent); }
+.nav-cta { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #000 !important; padding: 8px 20px; border-radius: 6px; font-weight: 700 !important; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--accent); }
+
+/* HERO */
+#home {
+  min-height: 100vh; display: flex; align-items: center;
+  padding: 130px 5% 80px; position: relative; overflow: hidden;
+}
+.hero-bg-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image: linear-gradient(rgba(0,255,200,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,200,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-orb { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; }
+.hero-orb-1 { width:500px; height:500px; background: radial-gradient(circle, rgba(0,255,200,0.08) 0%, transparent 70%); top:-100px; right:-100px; }
+.hero-orb-2 { width:350px; height:350px; background: radial-gradient(circle, rgba(0,132,255,0.07) 0%, transparent 70%); bottom:0; left:10%; }
+.hero-content { position: relative; z-index: 1; max-width: 700px; }
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(0,255,200,0.08); border: 1px solid var(--border);
+  border-radius: 100px; padding: 6px 16px; font-size: 13px; color: var(--accent);
+  margin-bottom: 28px; letter-spacing: 1px; text-transform: uppercase;
+}
+.hero-tag::before { content:''; width:7px; height:7px; background:var(--accent); border-radius:50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.4;transform:scale(1.3);} }
+.hero-content h1 {
+  font-family: 'Playfair Display', serif; font-size: clamp(40px,6vw,76px);
+  font-weight: 900; line-height: 1.05; margin-bottom: 22px; letter-spacing: -1px;
+}
+.name-grad { background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.typing-box { font-size:20px; height:36px; color:var(--accent); font-weight:500; margin-bottom:22px; }
+#typing { border-right: 2px solid var(--accent); padding-right: 4px; }
+.hero-desc { color:var(--muted); font-size:16px; line-height:1.8; max-width:560px; margin-bottom:34px; }
+.hero-btns { display:flex; gap:16px; flex-wrap:wrap; }
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent2)); color:#000;
+  font-weight:700; padding:14px 32px; border-radius:8px; border:none; cursor:pointer;
+  font-size:15px; font-family:'DM Sans',sans-serif; text-decoration:none; display:inline-block;
+  transition:transform 0.25s, box-shadow 0.25s;
+}
+.btn-primary:hover { transform:translateY(-3px); box-shadow:0 12px 30px rgba(0,255,200,0.3); }
+.btn-outline {
+  background:transparent; color:var(--text); font-weight:600; padding:14px 32px;
+  border-radius:8px; border:1px solid var(--border); cursor:pointer; font-size:15px;
+  font-family:'DM Sans',sans-serif; text-decoration:none; display:inline-block; transition:0.3s;
+}
+.btn-outline:hover { border-color:var(--accent); color:var(--accent); }
+.hero-stats { display:flex; gap:40px; margin-top:50px; padding-top:38px; border-top:1px solid var(--border); flex-wrap:wrap; }
+.stat-num { font-family:'Playfair Display',serif; font-size:36px; font-weight:700; color:var(--accent); }
+.stat-label { font-size:13px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
+
+/* SECTION COMMON */
+section { padding: 100px 5%; position: relative; }
+section:nth-child(even) { background: rgba(7,21,32,0.6); }
+.section-label { font-size:12px; text-transform:uppercase; letter-spacing:3px; color:var(--accent); margin-bottom:12px; }
+.section-title { font-family:'Playfair Display',serif; font-size:clamp(28px,4vw,50px); font-weight:700; margin-bottom:14px; line-height:1.1; }
+.section-sub { color:var(--muted); font-size:16px; max-width:580px; line-height:1.7; margin-bottom:55px; }
+
+/* ABOUT */
+#about .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center; }
+.about-visual { position:relative; }
+.about-card-main {
+  background:var(--surface2); border:1px solid var(--border); border-radius:20px;
+  padding:36px; text-align:center; position:relative; overflow:hidden;
+}
+.about-card-main::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:3px;
+  background:linear-gradient(90deg, var(--accent), var(--accent2));
+}
+.about-avatar {
+  width: 140px; height: 140px; border-radius: 50%; margin: 0 auto 20px;
+  border: 3px solid var(--accent);
+  box-shadow: 0 0 25px rgba(0,255,200,0.35), 0 0 50px rgba(0,255,200,0.1);
+  overflow: hidden; position: relative;
+}
+.about-avatar img {
+  width: 100%; height: 100%; object-fit: cover; object-position: top center;
+}
+.about-card-main h3 { font-family:'Playfair Display',serif; font-size:22px; margin-bottom:5px; }
+.about-card-main p { color:var(--muted); font-size:14px; }
+.skills-badges { display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; justify-content:center; }
+.badge { background:rgba(0,255,200,0.07); border:1px solid var(--border); border-radius:100px; padding:5px 14px; font-size:12px; color:var(--accent); font-weight:500; }
+.floating-tag {
+  position:absolute; background:var(--surface); border:1px solid var(--border);
+  border-radius:12px; padding:10px 16px; font-size:13px; font-weight:600;
+  display:flex; align-items:center; gap:8px; box-shadow:var(--glow);
+}
+.floating-tag.tl { top:-18px; left:-18px; }
+.floating-tag.br { bottom:-18px; right:-18px; }
+.floating-tag .dot { width:8px; height:8px; background:var(--accent); border-radius:50%; }
+.about-text-content .desc-item { margin-bottom:20px; padding-left:18px; border-left:2px solid var(--border); transition:border-color 0.3s; }
+.about-text-content .desc-item:hover { border-color:var(--accent); }
+.about-text-content .desc-item h4 { color:var(--accent); font-size:13px; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; }
+.about-text-content .desc-item p { color:var(--muted); font-size:15px; line-height:1.7; }
+
+/* SERVICES */
+#services .services-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:22px; }
+.service-card {
+  background:var(--surface); border:1px solid var(--border); border-radius:18px;
+  padding:30px 26px; transition:transform 0.3s, border-color 0.3s, box-shadow 0.3s; cursor:default;
+  position:relative; overflow:hidden;
+}
+.service-card::before { content:''; position:absolute; inset:0; border-radius:inherit; background:linear-gradient(135deg,rgba(0,255,200,0.04),rgba(0,132,255,0.04)); opacity:0; transition:opacity 0.4s; }
+.service-card:hover::before { opacity:1; }
+.service-card:hover { transform:translateY(-8px); border-color:rgba(0,255,200,0.35); box-shadow:0 20px 40px rgba(0,0,0,0.3),0 0 30px rgba(0,255,200,0.1); }
+.service-icon { font-size:34px; margin-bottom:18px; display:block; }
+.service-card h3 { font-family:'Playfair Display',serif; font-size:19px; margin-bottom:10px; }
+.service-card p { color:var(--muted); font-size:14px; line-height:1.7; }
+
+/* PORTFOLIO */
+.portfolio-filter { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:38px; }
+.filter-btn { background:transparent; border:1px solid var(--border); color:var(--muted); padding:7px 18px; border-radius:100px; cursor:pointer; font-family:'DM Sans',sans-serif; font-size:13px; transition:0.3s; }
+.filter-btn.active, .filter-btn:hover { background:rgba(0,255,200,0.1); border-color:var(--accent); color:var(--accent); }
+.portfolio-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:22px; }
+.portfolio-item {
+  border-radius:16px; overflow:hidden; border:1px solid var(--border);
+  position:relative; aspect-ratio:4/3; background:var(--surface2);
+  cursor:pointer; transition:transform 0.3s, box-shadow 0.3s;
+}
+.portfolio-item:hover { transform:scale(1.02); box-shadow:0 20px 40px rgba(0,0,0,0.4); }
+.portfolio-thumb { width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:64px; background:linear-gradient(135deg,var(--surface),var(--surface2)); }
+.portfolio-overlay {
+  position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%);
+  display:flex; flex-direction:column; justify-content:flex-end; padding:22px;
+  opacity:0; transition:opacity 0.3s;
+}
+.portfolio-item:hover .portfolio-overlay { opacity:1; }
+.portfolio-overlay h3 { font-family:'Playfair Display',serif; font-size:17px; margin-bottom:4px; }
+.portfolio-overlay span { font-size:12px; color:var(--accent); text-transform:uppercase; letter-spacing:1px; }
+
+/* TESTIMONIALS */
+#testimonials { background:var(--surface); }
+.testimonials-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:22px; }
+.testimonial-card { background:var(--bg); border:1px solid var(--border); border-radius:18px; padding:30px; transition:transform 0.3s, border-color 0.3s; }
+.testimonial-card:hover { transform:translateY(-6px); border-color:rgba(0,255,200,0.3); }
+.stars { color:#fbbf24; font-size:17px; margin-bottom:14px; }
+.testimonial-card blockquote { color:var(--muted); font-size:15px; line-height:1.8; font-style:italic; margin-bottom:22px; }
+.testi-author { display:flex; align-items:center; gap:14px; }
+.testi-avatar { width:44px; height:44px; border-radius:50%; background:linear-gradient(135deg,var(--accent),var(--accent2)); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
+.testi-name { font-weight:600; font-size:15px; }
+.testi-role { font-size:12px; color:var(--muted); }
+
+/* CONTACT */
+#contact .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:55px; align-items:start; }
+.contact-info h3 { font-family:'Playfair Display',serif; font-size:27px; margin-bottom:14px; }
+.contact-info p { color:var(--muted); font-size:15px; line-height:1.8; margin-bottom:34px; }
+.contact-detail { display:flex; align-items:center; gap:14px; margin-bottom:16px; text-decoration:none; color:var(--text); }
+.contact-detail-icon { width:44px; height:44px; border-radius:10px; background:rgba(0,255,200,0.08); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
+.contact-detail-text strong { display:block; font-size:12px; text-transform:uppercase; letter-spacing:1px; color:var(--muted); margin-bottom:2px; }
+.contact-detail-text span { font-size:15px; color:var(--text); }
+.map-container { border-radius:14px; overflow:hidden; border:1px solid var(--border); margin-top:36px; }
+.map-container iframe { width:100%; height:240px; display:block; filter:grayscale(80%) invert(90%) hue-rotate(180deg); border:none; }
+.contact-form-wrap { background:var(--surface2); border:1px solid var(--border); border-radius:20px; padding:38px; position:relative; overflow:hidden; }
+.contact-form-wrap::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--accent),var(--accent2)); }
+.form-group { margin-bottom:18px; }
+.form-group label { display:block; font-size:12px; text-transform:uppercase; letter-spacing:1px; color:var(--muted); margin-bottom:7px; }
+.form-group input, .form-group textarea { width:100%; background:rgba(0,0,0,0.3); border:1px solid var(--border); border-radius:10px; padding:13px 15px; color:var(--text); font-family:'DM Sans',sans-serif; font-size:15px; outline:none; transition:border-color 0.3s; }
+.form-group input:focus, .form-group textarea:focus { border-color:var(--accent); }
+.form-group textarea { resize:vertical; min-height:110px; }
+#messages { max-width:100%; margin:14px 0 0; }
+
+/* FLOATING BUTTONS */
+.wa-btn { position:fixed; bottom:90px; right:20px; width:56px; height:56px; border-radius:50%; background:#25D366; display:flex; align-items:center; justify-content:center; box-shadow:0 6px 20px rgba(37,211,102,0.4); z-index:900; text-decoration:none; font-size:27px; transition:transform 0.3s, box-shadow 0.3s; }
+.wa-btn:hover { transform:scale(1.1); box-shadow:0 8px 28px rgba(37,211,102,0.6); }
+.chat-btn { position:fixed; bottom:20px; right:20px; width:56px; height:56px; border-radius:50%; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#000; font-size:24px; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 6px 20px rgba(0,255,200,0.3); z-index:10000; transition:transform 0.3s; }
+.chat-btn:hover { transform:scale(1.1); }
+.chat-box { display:none; position:fixed; bottom:90px; right:20px; width:310px; height:420px; background:var(--surface); border:1px solid var(--border); border-radius:16px; box-shadow:0 20px 40px rgba(0,0,0,0.5); overflow:hidden; z-index:10000; flex-direction:column; }
+.chat-header { background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#000; padding:13px 15px; font-weight:700; font-size:15px; display:flex; align-items:center; justify-content:space-between; flex-shrink:0; }
+.close-chat { cursor:pointer; font-size:18px; }
+.chat-messages { flex:1; padding:13px; overflow-y:auto; min-height:0; background:var(--bg); }
+.chat-input { display:flex; border-top:1px solid var(--border); flex-shrink:0; }
+.chat-input input { flex:1; padding:12px 14px; border:none; outline:none; background:var(--surface2); color:var(--text); font-family:'DM Sans',sans-serif; font-size:14px; }
+.chat-input button { padding:12px 16px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#000; border:none; cursor:pointer; font-weight:700; font-size:14px; font-family:'DM Sans',sans-serif; }
+
+/* FOOTER */
+footer { background:var(--surface); border-top:1px solid var(--border); text-align:center; padding:30px 5%; }
+.footer-logo { font-family:'Playfair Display',serif; font-size:24px; font-weight:900; background:linear-gradient(90deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:12px; }
+footer p { color:var(--muted); font-size:14px; }
+footer a { color:var(--accent); text-decoration:none; }
+.footer-links { display:flex; justify-content:center; gap:22px; margin:14px 0; flex-wrap:wrap; }
+.footer-links a { color:var(--muted); text-decoration:none; font-size:14px; transition:color 0.3s; }
+.footer-links a:hover { color:var(--accent); }
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .nav-links { display:none; position:fixed; top:70px; left:0; right:0; background:rgba(2,11,16,0.98); backdrop-filter:blur(20px); flex-direction:column; padding:24px; gap:20px; border-bottom:1px solid var(--border); }
+  .nav-links.open { display:flex; }
+  .hamburger { display:flex; }
+  #about .about-grid, #contact .contact-grid { grid-template-columns:1fr; gap:36px; }
+  .hero-stats { gap:22px; }
+  .floating-tag { display:none; }
+  section { padding:65px 5%; }
+}
+
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">E~Dickson</div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://wa.me/2349158487236" class="nav-cta">Hire Me</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-content">
+      
+    <div class="hero-tag">Available for hire</div>
+      
+    <h1>Hi, I'm <br><span class="name-grad">Eniola Dickson</span></h1>
+    <div class="typing-box"><span id="typing"></span></div>
+    <p class="hero-desc">I design and build modern, responsive web applications with clean interfaces, real-time functionality, and smooth user experiences tailored for both personal and business needs.</p>
+    <div class="hero-btns">
+      <a href="https://wa.me/2349158487236" class="btn-primary">Hire Me on WhatsApp</a>
+      <a href="#portfolio" class="btn-outline">View My Work</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><div class="stat-num">15+</div><div class="stat-label">Projects Done</div></div>
+      <div class="stat-item"><div class="stat-num">10+</div><div class="stat-label">Happy Clients</div></div>
+      <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">mobile responsive</div></div>
+           <div class="stat-item"><div class="stat-num">Available for freelance</div>
+           
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">Who I Am</div>
+  <div class="section-title">About Me</div>
+  <div class="about-grid">
+    <div class="about-visual">
+      <div class="floating-tag tl"><div class="dot"></div> Open to Work</div>
+      <div class="about-card-main">
+        <div class="about-avatar">
+          <img src="logo.png" alt="Eniola Dickson - E~Dickson">
+        </div>
+        <h3>Eniola Dickson</h3>
+        <p>Web Developer & UI Designer • Lagos, Nigeria</p>
+        <div class="skills-badges">
+  <span class="badge">Full-Stack Web Dev</span>
+  <span class="badge">Real-Time Apps</span>
+  <span class="badge">Modern UI Design</span>
+  <span class="badge">Mobile-First Design</span>
+  <span class="badge">Node.js Backend</span>
+  <span class="badge">Socket.IO</span>
+  <span class="badge">Performance Optimization</span>
+  <span class="badge">Problem Solving</span>
+</div>
+      </div>
+      <div class="floating-tag br"><div class="dot"></div> Lagos, Nigeria 📍</div>
+    </div>
+    <div class="about-text-content">
+      <div class="desc-item">
+        <h4>Who I Am</h4>
+        <p>I'm a passionate Web Developer and UI Designer focused on building modern, responsive websites that are both beautiful and functional.</p>
+      </div>
+      <div class="desc-item">
+        <h4>What I Do</h4>
+        <p>I design and develop websites across industries — from portfolios and business sites to e-commerce platforms and real-time web applications.</p>
+      </div>
+      <div class="desc-item">
+        <h4>My Approach</h4>
+        <p>I focus on performance, aesthetics, and usability — turning ideas into fast, interactive, and professional web solutions that drive real results.</p>
+      </div>
+      <div class="desc-item">
+        <h4>Let's Connect</h4>
+      </div>
+      <a href="https://wa.me/2349158487236" class="btn-primary" style="margin-top:10px;display:inline-block">Let's Work Together</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label">What I Offer</div>
+  <div class="section-title">My Services</div>
+  <p class="section-sub">From concept to launch — I build modern digital experiences that help businesses grow online.</p>
+  <div class="services-grid">
+    <div class="service-card"><span class="service-icon">🖼️</span><h3>Portfolio Websites</h3><p>Showcase your work with a clean, professional layout built to impress and attract clients.</p></div>
+    <div class="service-card"><span class="service-icon">💼</span><h3>Business Websites</h3><p>Perfect for shops & startups looking to build a strong online presence and attract customers.</p></div>
+    <div class="service-card"><span class="service-icon">🛍️</span><h3>E-Commerce Stores</h3><p>Complete online store with secure payments, product catalogs & order tracking.</p></div>
+    <div class="service-card"><span class="service-icon">📰</span><h3>Blog / News Sites</h3><p>Dynamic platforms for publishing articles, breaking news, and trending stories with speed.</p></div>
+    <div class="service-card"><span class="service-icon">🏘️</span><h3>Organizations & NGOs</h3><p>Ideal for schools, churches & associations to share updates, events, and information.</p></div>
+    <div class="service-card"><span class="service-icon">💰</span><h3>Crypto & Fintech</h3><p>Sleek blockchain-focused layouts with token data, charts, roadmap & user education.</p></div>
+    <div class="service-card"><span class="service-icon">🏡</span><h3>Real Estate</h3><p>Beautiful property listings with images, pricing, filters, and location features.</p></div>
+    <div class="service-card"><span class="service-icon">⚖️</span><h3>Law Firms</h3><p>Clean authoritative design with attorney profiles, practice areas & consultation booking.</p></div>
+    <div class="service-card"><span class="service-icon">🎵</span><h3>Music & Entertainment</h3><p>Stream music, show albums, list events & sell merchandise — all in one stylish platform.</p></div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="section-label">My Work</div>
+  <div class="section-title">Portfolio & Gallery</div>
+  <p class="section-sub">A selection of websites and projects I've designed and built for clients across different industries.</p>
+  <div class="portfolio-filter">
+    <button class="filter-btn active">All</button>
+    <button class="filter-btn">Business</button>
+    <button class="filter-btn">E-Commerce</button>
+    <button class="filter-btn">Portfolio</button>
+    <button class="filter-btn">Blog</button>
+    
+    <button class="filter-btn">crypto web</button>
+    
+  <button class="filter-btn">mobile app</button>
+  </div>
+  <div class="portfolio-grid">
+
+  <div class="portfolio-item">
+    <img src="business.png" class="portfolio-thumb" alt="Business Website">
+    <div class="portfolio-overlay">
+      <h3>TechCorp Business Site</h3>
+      <span>Business</span>
+    </div>
+  </div>
+
+  <div class="portfolio-item">
+    <img src="e-commerce.png" class="portfolio-thumb" alt="E-Commerce Website">
+    <div class="portfolio-overlay">
+      <h3>ShopEasy E-Commerce</h3>
+      <span>E-Commerce</span>
+    </div>
+  </div>
+
+  <div class="portfolio-item">
+    <img src="portfolio.png" class="portfolio-thumb" alt="Creative Portfolio">
+    <div class="portfolio-overlay">
+      <h3>Creative Portfolio</h3>
+      <span>Portfolio</span>
+    </div>
+  </div>
+
+  <div class="portfolio-item">
+    <img src="blog.png" class="portfolio-thumb" alt="Blog Website">
+    <div class="portfolio-overlay">
+      <h3>Daily News Platform</h3>
+      <span>Blog</span>
+    </div>
+  </div>
+
+<div class="portfolio-item">
+    <img src="crypto.png" class="portfolio-thumb" alt="Sleek blockchain-focused layouts live tracker with roadmap & user education">
+    <div class="portfolio-overlay">
+      <h3>E~Dickson crypto-buzz</h3>
+      <span>crypto web</span>
+    </div>
+  </div>
+
+  <div class="portfolio-item">
+    <img src="real-estate.png" class="portfolio-thumb" alt="Real Estate Website">
+    <div class="portfolio-overlay">
+      <h3>Prime Realty Nigeria</h3>
+      <span>Real Estate</span>
+    </div>
+  </div>
+
+  <div class="portfolio-item">
+    <img src="organization.png" class="portfolio-thumb" alt="Organization Website">
+    <div class="portfolio-overlay">
+      <h3>st. David's Church</h3>
+      <span>Organization</span>
+    </div>
+  </div>
+
+  <div class="portfolio-item">
+    <img src="calculator.png" class="portfolio-thumb" alt="AI Scientific Calculator">
+    <div class="portfolio-overlay">
+      <h3>E~Dickson AI Scientific Calculator</h3>
+      <span>Application</span>
+    </div>
+  </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-label">Client Reviews</div>
+  <div class="section-title">What Clients Say</div>
+  <p class="section-sub">Real feedback from real clients I've had the pleasure of working with.</p>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <blockquote>Eniola built my business website in just a few days and it looked better than I imagined. Very professional and responsive. I highly recommend him!</blockquote>
+      <div class="testi-author"><div class="testi-avatar">👨‍💼</div><div><div class="testi-name">David O.</div><div class="testi-role">CEO, SwiftLogistics NG</div></div></div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <blockquote>The portfolio he designed for me got me hired within a week! Clean, fast, and mobile-friendly. he really understands what clients need.</blockquote>
+      <div class="testi-author"><div class="testi-avatar">👩‍🎨</div><div><div class="testi-name">Amara K.</div><div class="testi-role">Graphic Designer</div></div></div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <blockquote>Amazing work! My online store is running smoothly and customers love the UI. he was patient, communicative, and delivered on time.</blockquote>
+      <div class="testi-author"><div class="testi-avatar">👩‍💻</div><div><div class="testi-name">Fatima B.</div><div class="testi-role">Founder, GlowBeauty Store</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Get In Touch</div>
+  <div class="section-title">Contact Me</div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h3>Let's Build Something Great Together</h3>
+      <p>Have a project in mind? Reach out via any channel below and I'll get back to you as soon as possible.</p>
+      <a class="contact-detail" href="mailto:enioladickson63@gmail.com"><div class="contact-detail-icon">📧</div><div class="contact-detail-text"><strong>Email</strong><span>enioladickson63@gmail.com</span></div></a>
+      <a class="contact-detail" href="https://wa.me/2349158487236"><div class="contact-detail-icon">📱</div><div class="contact-detail-text"><strong>WhatsApp / Phone</strong><span>+234 915 848 7236</span></div></a>
+      <a class="contact-detail" href="#"><div class="contact-detail-icon">📍</div><div class="contact-detail-text"><strong>Location</strong><span>Lagos, Nigeria</span></div></a>
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253682.45932537555!2d3.1191035!3d6.5480357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b2ae68280c1%3A0xdc9e87a367c3d9cb!2sLagos%2C%20Nigeria!5e0!3m2!1sen!2s!4v1680000000000!5m2!1sen!2s" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+    <div class="contact-form-wrap">
+      <h2 style="font-family:'Playfair Display',serif;margin-bottom:22px;font-size:22px;">Send a Message</h2>
+      <div class="form-group"><label>Your Name</label><input type="text" id="name" placeholder="John Doe"></div>
+      <div class="form-group"><label>Email Address</label><input type="email" id="email" placeholder="john@example.com"></div>
+      <div class="form-group"><label>Phone Number</label><input type="tel" id="phone" placeholder="+234..."></div>
+      <div class="form-group"><label>Message</label><textarea id="message" rows="4" placeholder="Tell me about your project..."></textarea></div>
+      <button class="btn-primary" style="width:100%" onclick="sendMessage()">Send Message →</button>
+      <div id="messages"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">E~Dickson</div>
+  <div class="footer-links">
+    <a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a>
+    <a href="#portfolio">Portfolio</a><a href="#testimonials">Testimonials</a><a href="#contact">Contact</a>
+  </div>
+  <p>© 2026 Designed & Developed by <strong>Eniola Dickson</strong> 🥀 </p>
+</footer>
+
+<a href="https://wa.me/2349158487236" class="wa-btn" target="_blank" title="Chat on WhatsApp">💬</a>
+<div class="chat-btn" onclick="toggleChat()">🗨️</div>
+<div class="chat-box" id="chatBox">
+  <div class="chat-header">Customer Support <span class="close-chat" onclick="toggleChat()">✖</span></div>
+  <div class="chat-messages" id="chatMessages"></div>
+  <div class="chat-input">
+    <input id="chatInput" placeholder="Type your message...">
+    <button onclick="sendChat()">Send</button>
+  </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+const texts = ["Web Developer 💻","UI/UX Designer 🎨","Modern UI Specialist ✨","Frontend Engineer  ⚡"];
+let index=0,charIndex=0,isDeleting=false,speed=100;
+function type(){
+  const el=document.getElementById("typing");
+  let cur=texts[index];
+  if(!isDeleting){el.textContent=cur.substring(0,charIndex++);if(charIndex>cur.length){isDeleting=true;speed=60;setTimeout(type,1500);return;}}
+  else{el.textContent=cur.substring(0,charIndex--);if(charIndex<0){isDeleting=false;index=(index+1)%texts.length;speed=100;}}
+  setTimeout(type,speed);
+}
+type();
+
+function toggleMenu(){document.getElementById("navLinks").classList.toggle("open");}
+
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+
+const socket=io();
+
+function sendMessage(){
+  const name=document.getElementById("name").value;
+  const email=document.getElementById("email").value;
+  const phone=document.getElementById("phone").value;
+  const message=document.getElementById("message").value;
+  if(!name||!email||!message){alert("Please fill all required fields!");return;}
+  socket.emit("userMessage",{name,email,phone,message});
+  document.getElementById("message").value="";
+}
+
+function toggleChat(){
+  const box=document.getElementById("chatBox");
+  box.style.display=box.style.display==="flex"?"none":"flex";
+}
+
+function sendChat(){
+  const input=document.getElementById("chatInput");
+  const text=input.value;
+  if(!text)return;
+  socket.emit("userMessage",{name:"Guest",message:text});
+  input.value="";
+}
+
+socket.on("messageUpdate",(messages)=>{
+  const container=document.getElementById("messages");
+  const chatContainer=document.getElementById("chatMessages");
+  container.innerHTML="";chatContainer.innerHTML="";
+  messages.forEach((m)=>{
+    const isAdmin=(m.name||"").toLowerCase()==="admin";
+    const icon=isAdmin?"👩‍💻":"🙎";
+    const align=isAdmin?"flex-end":"flex-start";
+    const bg=isAdmin?"#d1f7d6":"#2563eb";
+    const time=new Date(m.id).toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"});
+    const wrapper=document.createElement("div");
+    wrapper.style.cssText=`display:flex;justify-content:${align};margin-bottom:10px;`;
+    const bubble=document.createElement("div");
+    bubble.style.cssText=`max-width:75%;padding:10px;border-radius:12px;background:${bg};box-shadow:0 2px 6px rgba(0,0,0,0.1);`;
+    bubble.innerHTML=`<b>${icon} ${m.name}</b><br>${m.message}<br><span style="font-size:0.75em;color:#555;">${time}</span>`;
+    if(m.reply){
+      const reply=document.createElement("div");
+      reply.style.cssText="margin-top:5px;padding:8px;border-left:3px solid #333;background:#32CD32;border-radius:8px;";
+      reply.innerHTML=`<b>👩‍💻 Admin Reply:</b><br>${m.reply}`;
+      bubble.appendChild(reply);
+    }
+    wrapper.appendChild(bubble);
+    container.appendChild(wrapper);
+    chatContainer.appendChild(wrapper.cloneNode(true));
+  });
+});
+
+socket.on("adminTyping",()=>{
+  const el=document.getElementById("typingIndicator");
+  if(el)el.style.display="block";
+});
+</script>
+</body>
+</html>

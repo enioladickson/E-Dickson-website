@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dickson Admin Panel</title>
+
+<style>
+*{
+ margin:0;
+ padding:0;
+ box-sizing:border-box;
+ font-family: "Poppins", Arial, sans-serif;
+}
+
+body{
+ background: linear-gradient(135deg, #0f0f0f, #1b1b3a, #002b5b);
+ background-size: 300% 300%;
+ animation: bgMove 15s ease infinite;
+ color:white;
+ padding:40px 20px;
+}
+
+@keyframes bgMove {
+ 0%{background-position:0% 50%;}
+ 50%{background-position:100% 50%;}
+ 100%{background-position:0% 50%;}
+}
+
+h1{
+ text-align:center;
+ margin-bottom:20px;
+ font-size:28px;
+ font-weight:600;
+ letter-spacing:1px;
+}
+
+.logout-btn{
+  display:block;
+  margin:0 auto 20px auto;
+  background:red;
+  padding:10px 18px;
+  border:none;
+  border-radius:8px;
+  color:white;
+  cursor:pointer;
+}
+.panel{
+ max-width:750px;
+ margin:auto;
+ background: rgba(255, 255, 255, 0.06);
+ padding:25px;
+ border-radius:15px;
+ box-shadow:0 8px 25px rgba(0,0,0,0.4);
+ backdrop-filter: blur(10px);
+}
+
+.message{
+ background: rgba(255, 255, 255, 0.08);
+ padding:20px;
+ margin-bottom:20px;
+ border-radius:12px;
+ border-left:4px solid #007aff;
+}
+
+textarea{
+ width:100%;
+ padding:12px;
+ margin-top:12px;
+ border-radius:8px;
+ background:#1a1a1a;
+ color:white;
+ resize:none;
+}
+</style>
+</head>
+
+<body>
+
+<script>
+// CHECK LOGIN
+fetch("/admin", { method: "GET" })
+  .then(res => {
+    if (res.redirected) {
+      window.location.href = "/login.html";
+    }
+  });
+</script>
+
+<h1>🥀🐾 E~Dickson • Admin Panel</h1>
+
+<button class="logout-btn" onclick="window.location.href='/logout'">
+  Logout
+</button>
+
+<div class="panel" id="panel"></div>
+
+<script src="/socket.io/socket.io.js"></script>
+
+<script>
+const socket = io();
+
+socket.on("messageUpdate", (messages) => {
+  const panel = document.getElementById("panel");
+  panel.innerHTML = "";
+
+  if (messages.length === 0) {
+    panel.innerHTML = "<p>No messages yet...</p>";
+    return;
+  }
+
+  messages.forEach((m) => {
+    const box = document.createElement("div");
+    box.className = "message";
+
+    const time = new Date(m.id).toLocaleString();
+
+    box.innerHTML = `
+      <b>🙎 Customer:</b> ${m.name}<br>
+      <b>📧 Email:</b> ${m.email || "Not provided"}<br>
+      <b>📱 Phone:</b> ${m.phone || "Not provided"}<br>
+      <b>📝 Message:</b> ${m.message}<br>
+      <small>🕒 ${time}</small>
+    `;
+
+    if (m.reply) {
+      const replyBox = document.createElement("div");
+      replyBox.style = "margin-top:10px;background:#32CD32;padding:10px;border-radius:8px;color:black;";
+      replyBox.innerHTML = `<b>👩‍💻 Admin Reply:</b><br>${m.reply}`;
+      box.appendChild(replyBox);
+    }
+
+    const textarea = document.createElement("textarea");
+    textarea.placeholder = "Write your reply…";
+
+    const button = document.createElement("button");
+    button.innerText = "Send Reply";
+    button.onclick = () => {
+      const replyText = textarea.value.trim();
+      if (!replyText) return;
+
+      socket.emit("adminReply", { id: m.id, reply: replyText });
+      textarea.value = "";
+    };
+
+    box.appendChild(textarea);
+    box.appendChild(button);
+    panel.appendChild(box);
+  });
+});
+</script>
+</body>
+</html>

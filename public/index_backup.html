@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🥀🐾E~Dickson ✨💐 - Web Developer</title>
+<style>
+/* Global */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+body{background:#f4f4f4;color:#333;transition:0.4s;line-height:1.6;}
+body.dark{background:#121212;color:#eee;}
+
+/* Header */
+header{text-align:center;padding:25px;background:linear-gradient(135deg,#0077ff,#00c6ff);color:white;}
+header img.logo{width:90px;margin-bottom:10px;}
+header h1{font-size:28px;}
+header .subtitle{font-size:14px;opacity:0.9;margin-bottom:10px;}
+nav a{color:white;text-decoration:none;margin:0 10px;font-weight:bold;}
+nav a:hover{text-decoration:underline;}
+.darkbtn{margin-top:10px;padding:8px 15px;border:none;border-radius:6px;background:black;color:white;cursor:pointer;}
+
+/* Hero */
+.hero{text-align:center;padding:50px 20px;}
+.hero h2{font-size:30px;margin-bottom:10px;}
+.hero p{max-width:600px;margin:auto;margin-bottom:20px;}
+.hirebtn{background:#0077ff;color:white;border:none;padding:12px 25px;border-radius:8px;cursor:pointer;font-size:16px;}
+.hirebtn:hover{background:#005bbb;}
+.types{margin-top:20px;font-weight:bold;color:#0077aa;}
+
+/* Services */
+.services{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;padding:30px;}
+.card{background:white;width:260px;padding:20px;border-radius:10px;box-shadow:0 4px 15px rgba(0,0,0,0.1);text-align:center;transition:0.3s;}
+.card:hover{transform:translateY(-5px);}
+body.dark .card{background:#2b2b2b;color:#eee;}
+.card img{width:60px;margin-bottom:10px;}
+
+/* Contact Form */
+.contact{text-align:center;padding:30px;}
+.contact input,.contact textarea{width:90%;padding:10px;margin:10px 0;border-radius:6px;border:1px solid #ccc;transition:0.3s;}
+body.dark .contact input,body.dark .contact textarea{background:#333;color:white;border:1px solid #555;}
+.sendbtn{background:#00c6ff;color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;}
+
+/* Messages display */
+#messages{max-width:90%;margin:20px auto;text-align:left;padding:10px;background:white;border-radius:8px;height:200px;overflow-y:auto;box-shadow:0 2px 10px rgba(0,0,0,0.1);}
+body.dark #messages{background:#2b2b2b;color:#eee;}
+.message{padding:5px;margin-bottom:8px;border-bottom:1px solid #eee;}
+body.dark .message{border-color:#555;}
+.message .reply{color:#0077ff;margin-left:15px;display:block;}
+
+/* Footer */
+footer{background:#111;color:white;text-align:center;padding:20px;margin-top:30px;}
+
+/* Floating chat */
+.chat-btn{position:fixed;bottom:20px;right:20px;background:#00c6ff;color:white;font-size:25px;padding:15px;border-radius:50%;cursor:pointer;box-shadow:0 5px 10px rgba(0,0,0,0.3);z-index:1000;}
+.chat-box{display:none;position:fixed;bottom:80px;right:20px;width:300px;max-height:400px;background:white;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,0.3);overflow:hidden;z-index:1000;flex-direction:column;}
+body.dark .chat-box{background:#2b2b2b;color:#eee;}
+.chat-header{background:#0077ff;color:white;padding:10px;text-align:center;font-weight:bold;}
+.chat-messages{flex:1;padding:10px;overflow-y:auto;height:200px;}
+.chat-input{display:flex;border-top:1px solid #ccc;}
+.chat-input input{flex:1;padding:10px;border:none;outline:none;}
+body.dark .chat-input input{background:#333;color:white;}
+.chat-input button{padding:10px;background:#00c6ff;color:white;border:none;cursor:pointer;}
+
+@media(max-width:768px){.services{flex-direction:column;align-items:center;}}
+</style>
+</head>
+<body>
+
+<header>
+<img class="logo" src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png">
+<h1>🥀🐾E~Dickson ✨💐</h1>
+<div class="subtitle">A Web Developer 🌐💻♻️</div>
+<nav>
+<a href="#">Home</a>
+<a href="#">Services</a>
+<a href="#">Contact</a>
+</nav>
+<button class="darkbtn" onclick="document.body.classList.toggle('dark')">🌙 Dark Mode</button>
+</header>
+
+<section class="hero">
+<h2>Welcome to My Website</h2>
+<p>Hello guys this is Eniola Dickson website I'm a web developer, I can build modern, clean and professional websites for your personal use or business.<br>
+Let me create something amazing for you! 💪</p>
+<button class="hirebtn" onclick="window.open('https://wa.me/2349158487236')">Hire Me</button>
+<div class="types">Here are the types of websites I can build</div>
+</section>
+
+<section class="services">
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/1828/1828919.png">
+<h3>🖼️ Portfolio Websites</h3>
+<p>Showcase your personal or professional work beautifully.</p>
+</div>
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+<h3>🏢 Business Websites</h3>
+<p>Modern websites for businesses, shops and startups.</p>
+</div>
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/2942/2942789.png">
+<h3>🏫⛪ School & Organization</h3>
+<p>Professional websites for schools, churches and groups.</p>
+</div>
+</section>
+
+<section class="contact">
+<h2>Send a Message</h2>
+<input type="text" id="name" placeholder="Your Name">
+<input type="email" id="email" placeholder="Your Email">
+<input type="tel" id="phone" placeholder="Your Contact Number">
+<textarea id="message" rows="4" placeholder="Your Message"></textarea><br>
+<button class="sendbtn" onclick="sendMessage()">Send Message</button>
+<div id="messages"></div>
+</section>
+
+<footer>Contact: <a href="mailto:enioladickson63@gmail.com" style="color:#00c6ff;">enioladickson63@gmail.com</a></footer>
+
+<!-- Floating chat -->
+<div class="chat-btn" onclick="toggleChat()">💬</div>
+<div class="chat-box" id="chatBox">
+<div class="chat-header">Customer Service</div>
+<div class="chat-messages" id="chatMessages"></div>
+<div class="chat-input">
+<input type="text" id="chatInput" placeholder="Type your message...">
+<button onclick="sendChat()">Send</button>
+</div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+const socket = io();
+
+// Contact form message
+function sendMessage(){
+  const name=document.getElementById('name').value;
+  const email=document.getElementById('email').value;
+  const phone=document.getElementById('phone').value;
+  const message=document.getElementById('message').value;
+  if(!name||!email||!message) return alert('Fill all fields!');
+  socket.emit('userMessage',{name,email,phone,message});
+  document.getElementById('message').value='';
+}
+
+// Toggle chat box
+function toggleChat(){
+  const box=document.getElementById('chatBox');
+  box.style.display = box.style.display==='flex'?'none':'flex';
+}
+
+// Floating chat send
+function sendChat(){
+  const input=document.getElementById('chatInput');
+  const text=input.value;
+  if(!text) return;
+  socket.emit('userMessage',{name:'Guest',message:text});
+  input.value='';
+}
+
+// Receive messages & replies
+socket.on('messageUpdate', messages=>{
+  const container=document.getElementById('messages');
+  const chatContainer=document.getElementById('chatMessages');
+  container.innerHTML='';
+  chatContainer.innerHTML='';
+  messages.forEach(m=>{
+    const div=document.createElement('div');
+    div.classList.add('message');
+    div.innerHTML=`<b>${m.name}:</b> ${m.message}<br><span style="font-size:0.8em;color:#666;">${new Date(m.id).toLocaleString()}</span>`;
+    if(m.reply) div.innerHTML+=`<span class="reply"><b>Reply:</b> ${m.reply}</span>`;
+    container.appendChild(div);
+    chatContainer.appendChild(div.cloneNode(true));
+  });
+});
+</script>
+</body>
+</html>
