@@ -1,38 +1,467 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🥀🐾E~Dickson ✨💐 - Web Developer</title>
+<title>🥀🐾E~Dickson ✨💐 - Website</title>
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
-/* Global */
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
-body{background:#f4f4f4;color:#333;transition:0.4s;line-height:1.6;}
-body.dark{background:#121212;color:#eee;}
 
-/* Header */
-header{text-align:center;padding:25px;background:linear-gradient(135deg,#0077ff,#00c6ff);color:white;}
-header img.logo{width:90px;margin-bottom:10px;}
-header h1{font-size:28px;}
-header .subtitle{font-size:14px;opacity:0.9;margin-bottom:10px;}
-nav a{color:white;text-decoration:none;margin:0 10px;font-weight:bold;}
-nav a:hover{text-decoration:underline;}
-.darkbtn{margin-top:10px;padding:8px 15px;border:none;border-radius:6px;background:black;color:white;cursor:pointer;}
+}
 
-/* Hero */
-.hero{text-align:center;padding:50px 20px;}
-.hero h2{font-size:30px;margin-bottom:10px;}
-.hero p{max-width:600px;margin:auto;margin-bottom:20px;}
-.hirebtn{background:#0077ff;color:white;border:none;padding:12px 25px;border-radius:8px;cursor:pointer;font-size:16px;}
-.hirebtn:hover{background:#005bbb;}
-.types{margin-top:20px;font-weight:bold;color:#0077aa;}
+    html, body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #000909, #003646, #0a0014);
+  background-size: 300% 300%;
+  animation: bgMove 15s ease infinite;
+  color: white;
+}
 
-/* Services */
-.services{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;padding:30px;}
-.card{background:white;width:260px;padding:20px;border-radius:10px;box-shadow:0 4px 15px rgba(0,0,0,0.1);text-align:center;transition:0.3s;}
-.card:hover{transform:translateY(-5px);}
-body.dark .card{background:#2b2b2b;color:#eee;}
-.card img{width:60px;margin-bottom:10px;}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins', sans-serif;
+}
+
+body{
+background: linear-gradient(135deg, #000909, #003646, #0a0014);
+color:white;
+transition:0.4s;
+}
+
+/* HEADER */
+header{
+padding:15px 30px;
+text-align:center;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(4px);
+position:sticky;
+top:0;
+z-index:100;
+border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+header {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Logo */
+header .logo {
+  width: 55px;
+  height: auto;
+  margin-bottom: 8px;
+}
+
+/* Name */
+header h1 {
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+/* Accent line */
+header .accent-line {
+  width: 60px;
+  height: 3px;
+  margin: 10px auto 0;
+  background: linear-gradient(90deg, transparent, #00ff88, transparent);
+  border-radius: 10px;
+  position: relative;
+}
+
+header .accent-line::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: #00ff88;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: -3px;
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px #00ff88;
+}
+
+/* HERO SECTION */
+.hero{
+text-align:center;
+padding:50px 20px;
+}
+
+.hero h1{
+font-size:40px;
+margin-bottom:5px;
+}
+
+.subtitle-box {
+  position: relative;
+  overflow: hidden;
+
+  width: 92%;
+  max-width: 500px;
+  margin: 25px auto;
+  padding: 22px 26px;
+  text-align: center;
+
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.25);
+
+  background: linear-gradient(
+      135deg,
+      #1a1a1a,
+    #000909 0%,
+    #003646 45%,
+    #0a0014 100%
+  );
+  background-size: 200% 200%;
+  animation: metalMove 10s ease infinite;
+
+  box-shadow:
+    0 0 25px rgba(255,255,255,0.08),
+    inset 0 0 30px rgba(255,255,255,0.12),
+    inset 0 0 80px rgba(150,150,150,0.25);
+
+  backdrop-filter: blur(14px);
+}
+
+.subtitle-box.tap {
+  transform: translateY(-6px);
+  border-color: #00ff9d;
+
+  box-shadow:
+    0 14px 35px rgba(0, 255, 150, 0.35),
+    0 0 40px rgba(0,255,150,0.45);
+}
+
+.subtitle-box {
+  animation: metalMove 3s ease infinite, autoTap 5s infinite;
+  
+}
+
+@keyframes autoTap {
+  0%, 80% {
+    transform: translateY(0px);
+    border-color: rgba(255,255,255,0.25);
+    box-shadow:
+      0 0 25px rgba(255,255,255,0.08),
+      inset 0 0 30px rgba(255,255,255,0.12),
+      inset 0 0 80px rgba(150,150,150,0.25);
+  }
+
+  85%, 95% {
+    transform: translateY(-6px);
+    border-color: #00ff9d;
+    box-shadow:
+      0 14px 35px rgba(0, 255, 150, 0.35),
+      0 0 40px rgba(0,255,150,0.45);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* MOVING CHROME SHINE LINE */
+.subtitle-box::after {
+  content: "";
+  position: absolute;
+  top: -120%;
+  left: -40%;
+  width: 200%;
+  height: 300%;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255,255,255,0.35) 45%,
+    rgba(255,255,255,0.7) 50%,
+    rgba(255,255,255,0.35) 55%,
+    transparent 100%
+  );
+  transform: rotate(15deg);
+  animation: chromeShine 5.5s linear infinite;
+}
+
+/* Hover Glow */
+.subtitle-box:hover {
+  transform: translateY(-6px);
+  border-color: #00ff9d;
+  box-shadow:
+    0 14px 35px rgba(0, 255, 150, 0.35),
+    0 0 40px rgba(0,255,150,0.45);
+}
+
+/* TEXT */
+.subtitle-box p {
+  position: relative;
+  z-index: 5;
+  color: #e0e0e0;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-shadow: 0 0 8px rgba(255,255,255,0.35);
+}
+
+/* Chrome Shine Animation */
+@keyframes chromeShine {
+  0%   { transform: translateX(-150%) rotate(15deg); }
+  100% { transform: translateX(150%) rotate(15deg); }
+}
+
+/* Metal background subtle flow */
+@keyframes metalMove {
+  0%   { background-position: 0% 0%; }
+  50%  { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+
+
+/* 🔥 GOOGLE-STYLE COLOR SHINE LINE */
+.subtitle-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 300%;
+  height: 4px;
+
+  background: linear-gradient(
+    90deg,
+    #4285F4,  /* Google Blue */
+    #EA4335,  /* Google Red */
+    #FBBC05,  /* Google Yellow */
+    #34A853,  /* Google Green */
+    #4285F4
+  );
+  background-size: 300% 100%;
+  animation: colorShine 6s linear infinite;
+}
+
+
+/* Moving color shine line */
+@keyframes colorShine {
+  0% { left: -100%; }
+  100% { left: 0%; }
+}
+
+
+.subtitle {
+  font-family: "Courier New", monospace;
+  font-size:20px;
+  font-weight: 800;
+  color: #00ff88;
+  letter-spacing: 1px;
+  text-shadow: 0 0 6px rgba(0, 255, 128, 0.8);
+}
+
+.about-box {
+  width: 160px;
+  margin: 30px auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  color: white;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.about-box:after {
+  content: "";
+  display: block;
+  width: 70%;
+  height: 3px;
+  background: linear-gradient(90deg, #ffffff, transparent);
+  margin: 6px auto 0;
+  border-radius: 10px;
+}
+
+.types-box:after {
+  content: "";
+  display: block;
+  width: 70%;
+  height: 3px;
+  background: linear-gradient(90deg, #ffffff, transparent);
+  margin: 6px auto 0;
+  border-radius: 10px;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-attachment: fixed;
+}
+
+.category-hero {
+  text-align: center;
+  padding: 50px 20px;
+  background: linear-gradient(135deg, #000909, #003646, #0a0014);
+  border-radius: 20px;
+  margin: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.category-hero h2 {
+  font-size: 28px;
+  margin: 15px 0 10px;
+  color: #e2e8f0;
+}
+
+.category-hero .arrow {
+  font-size: 26px;
+  margin-top: 5px;
+  color: #fbbf24; /* warm yellow instead of green */
+}
+
+.illustration {
+  width: 140px;
+  height: 140px;
+  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.4));
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Icon illustration */
+.icon{
+  font-size: 45px;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 10px rgba(0,255,255,0.6));
+}
+
+
+\*floating animation */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.hero-img img{
+width:260px;
+margin-top:20px;
+animation:float 3s ease-in-out infinite;
+}
+
+.hirebtn{
+background:linear-gradient(135deg,#00c6ff,#0072ff);
+border:none;
+padding:12px 25px;
+border-radius:8px;
+color:white;
+cursor:pointer;
+font-size:16px;
+box-shadow:0 5px 20px rgba(0,0,0,0.3);
+margin-top:10px;
+}
+
+
+@keyframes float{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-15px);}
+}
+
+/* ---- Layout: Center the cards ---- */
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 40px 0;
+}
+
+/* ---- PRO SERVICE CARDS ---- */
+.card {
+  position: relative;
+  overflow: hidden; /* important: keeps animation behind content */
+  
+  border: 1px solid rgba(0, 255, 150, 0.08);
+  border-radius: 18px;
+  padding: 24px;
+  width: 260px;
+  text-align: left;
+  transition: 0.35s ease;
+  transform: translateY(0);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+}
+
+/* Gradient animation placed in a pseudo-element */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: 0;
+
+  background: linear-gradient(
+    135deg,
+    #000909 0%,
+    #003646 45%,
+    #0a0014 100%
+  );
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
+}
+
+/* Put card content above gradient layer */
+.card * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Hover */
+.card:hover {
+  transform: translateY(-12px);
+  border-color: #00ff9d;
+  box-shadow:
+    0 12px 30px rgba(0, 255, 150, 0.25),
+    0 0 25px rgba(0, 255, 150, 0.45);
+}
+
+/* Icon */
+.card img {
+  width: 60px;
+  margin-bottom: 18px;
+  filter: drop-shadow(0 0 12px rgba(0,255,150,0.45));
+}
+
+/* Title */
+.card h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #eafff7;
+}
+
+/* Text */
+.card p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #c9d1d9;
+}
+
+/* Smooth gradient animation */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
 
 /* Contact Form */
 .contact{text-align:center;padding:30px;}
@@ -47,60 +476,525 @@ body.dark #messages{background:#2b2b2b;color:#eee;}
 body.dark .message{border-color:#555;}
 .message .reply{color:#0077ff;margin-left:15px;display:block;}
 
-/* Footer */
-footer{background:#111;color:white;text-align:center;padding:20px;margin-top:30px;}
+/* =========================
+   FLOATING CHAT BUTTON
+========================= */
+.chat-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #00c6ff;
+  color: white;
+  font-size: 25px;
+  padding: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+  z-index: 10000;
+}
 
-/* Floating chat */
-.chat-btn{position:fixed;bottom:20px;right:20px;background:#00c6ff;color:white;font-size:25px;padding:15px;border-radius:50%;cursor:pointer;box-shadow:0 5px 10px rgba(0,0,0,0.3);z-index:1000;}
-.chat-box{display:none;position:fixed;bottom:80px;right:20px;width:300px;max-height:400px;background:white;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,0.3);overflow:hidden;z-index:1000;flex-direction:column;}
-body.dark .chat-box{background:#2b2b2b;color:#eee;}
-.chat-header{background:#0077ff;color:white;padding:10px;text-align:center;font-weight:bold;}
-.chat-messages{flex:1;padding:10px;overflow-y:auto;height:200px;}
-.chat-input{display:flex;border-top:1px solid #ccc;}
-.chat-input input{flex:1;padding:10px;border:none;outline:none;}
-body.dark .chat-input input{background:#333;color:white;}
-.chat-input button{padding:10px;background:#00c6ff;color:white;border:none;cursor:pointer;}
+/* =========================
+   CHAT BOX (MAIN FIX HERE)
+========================= */
+.chat-box {
+  display: none;
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 300px;
+  height: 400px;              /* FIXED HEIGHT */
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  overflow: hidden;
+  z-index: 10000;
 
-@media(max-width:768px){.services{flex-direction:column;align-items:center;}}
+  
+  flex-direction: column;     /* IMPORTANT */
+}
+
+/* Dark mode support */
+body.dark .chat-box {
+  background: #2b2b2b;
+  color: #eee;
+}
+
+/* =========================
+   HEADER
+========================= */
+.chat-header {
+  background: #0077ff;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+/* =========================
+   MESSAGES AREA
+========================= */
+.chat-messages {
+  flex: 1;              /* TAKES ALL SPACE */
+  padding: 10px;
+  overflow-y: auto;
+  min-height: 0;        /* FIX MOBILE FLEX BUG */
+}
+
+/* =========================
+   INPUT AREA
+========================= */
+.chat-input {
+  display: flex;
+  border-top: 1px solid #ccc;
+  flex-shrink: 0;      /* NEVER SHRINK */
+}
+
+/* INPUT FIELD */
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  outline: none;
+}
+
+/* DARK MODE INPUT */
+body.dark .chat-input input {
+  background: #333;
+  color: white;
+}
+
+/* SEND BUTTON (FIXED ALIGNMENT) */
+.chat-input button {
+  padding: 10px 15px;
+  background: #00c6ff;
+  color: white;
+  border: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+/* =========================
+   MOBILE SAFETY
+========================= */
+@media (max-width: 768px) {
+  .chat-box {
+    width: 90%;
+    right: 5%;
+  }
+}
+
+
+
+
+/* FOOTER */
+footer{
+    bottom: 0;
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255,255,255,0.15);
+    text-align: center;
+    padding: 6px 0;
+    font-size: 15px;
+    color: #ddd;
+}
+
+.mp-title{
+text-align:center;
+color:#00ffbb;
+margin-bottom:15px;
+}
+
+
+.hero {
+  max-width: 800px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.name {
+  background: linear-gradient(90deg, #00ffd5, #0084ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.typing-box {
+  font-size: 1.4rem;
+  height: 40px;
+  margin-bottom: 20px;
+  color: #00ffd5;
+  font-weight: 500;
+}
+
+#typing {
+  border-right: 3px solid #00ffd5;
+  padding-right: 5px;
+}
+
+.desc {
+  margin: 10px 0;
+  line-height: 1.7;
+  color: #ccc;
+}
+
+.arrow {
+  font-size: 1.8rem;
+  margin-top: 20px;
+}
+
+.card {
+  padding: 20px;
+  background: #(135deg,#0f2027,#203a43,#2c5364);
+  border-radius: 15px;
+  text-align: center;
+  border: 2px solid #00eaff;
+  transition: 0.4s;
+  box-shadow: 0 0 10px #00eaff,
+              0 0 20px #00eaff inset;
+}
+
+.card:hover {
+  box-shadow: 0 0 20px #00eaff,
+              0 0 40px #00eaff inset;
+}
+
+#messages, #chatMessages {
+  display: flex;
+  flex-direction: column;
+}
+
+.message {
+  width: 100%;
+}
+
+
+/* ========================================= */
+/* 📱 MOBILE RESPONSIVE CSS (600px and below) */
+/* ========================================= */
+@media (max-width: 600px) {
+
+  body {
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  /* HEADER */
+  header {
+    padding: 10px 15px;
+  }
+
+  header h1 {
+    font-size: 16px;
+  }
+
+  header .logo {
+    width: 40px;
+  }
+
+  .accent-line {
+    width: 45px;
+  }
+
+  /* HERO SECTION */
+  .hero {
+    padding: 30px 10px;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .subtitle-box {
+    width: 90%;
+    padding: 12px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .hero-img img {
+    width: 180px;
+  }
+
+  /* ABOUT BOX */
+  .about-box {
+    width: 70%;
+    padding: 15px;
+    font-size: 14px;
+  }
+
+  /* CATEGORY SECTION */
+  .category-hero {
+    padding: 30px 10px;
+    margin: 15px;
+  }
+
+  .category-hero h2 {
+    font-size: 22px;
+  }
+
+  .illustration {
+    width: 110px;
+    height: 110px;
+  }
+
+  /* SERVICES CARDS */
+  .services {
+    gap: 15px;
+    padding: 20px 10px;
+  }
+
+  .card {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .card img {
+    width: 40px;
+  }
+
+  /* CONTACT FORM */
+  .contact input,
+  .contact textarea {
+    width: 95%;
+    font-size: 14px;
+  }
+
+  .contact button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+.rainbow {
+  font-size: 20px;
+  font-weight: 300;
+  background: linear-gradient(90deg, #ff0080, #ffae00, #00ff4c, #00c8ff, #b300ff);
+  background-size: 400%;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: rainbowFlow 6s linear infinite, rainbowGlow 2s ease-in-out infinite;
+}
+
+@keyframes rainbowFlow {
+  0% { background-position: 0%; }
+  100% { background-position: 400%; }
+}
+
+@keyframes rainbowGlow {
+  0%,100% { text-shadow: 0 0 15px rgba(255,255,255,0.4); }
+  50%     { text-shadow: 0 0 25px rgba(255,255,255,0.8); }
+}
+
+}
 </style>
 </head>
-<body>
 
+<body>
 <header>
-<img class="logo" src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png">
-<h1>🥀🐾E~Dickson ✨💐</h1>
-<div class="subtitle">A Web Developer 🌐💻♻️</div>
-<nav>
-<a href="#">Home</a>
-<a href="#">Services</a>
-<a href="#">Contact</a>
-</nav>
-<button class="darkbtn" onclick="document.body.classList.toggle('dark')">🌙 Dark Mode</button>
+    <img class="logo" src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="logo">
+    <h1 class="rainbow">🥀E~Dickson🐾</h1>
+    <div class="accent-line"></div>
 </header>
 
 <section class="hero">
-<h2>Welcome to My Website</h2>
-<p>Hello guys this is Eniola Dickson website I'm a web developer, I can build modern, clean and professional websites for your personal use or business.<br>
-Let me create something amazing for you! 💪</p>
-<button class="hirebtn" onclick="window.open('https://wa.me/2349158487236')">Hire Me</button>
-<div class="types">Here are the types of websites I can build</div>
-</section>
 
+<div class="subtitle-box">
+  <div class="icon">
+  <svg width="60" height="60" viewBox="0 0 24 24" fill="none">
+    <circle cx="12" cy="12" r="10" stroke="#00ffff" stroke-width="1.5"/>
+    <path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"
+      stroke="#00ffff" stroke-width="1.2"/>
+  </svg>
+    <div class="subtitle">A WEB DEVELOPER • UI DESIGNER • PROGRAMMER</div>
+  </div> ♻️👩‍💻🧩</div>
+</div>
+
+<div class="section">
+<div class="about-box">
+  <h2>About Me</h2>
+</div>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eniola~Dickson</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="hero">
+
+  <h1>Hi, I’m <span class="name">Eniola~Dickson 👋</span></h1>
+
+  <h2 class="typing-box">
+    <span id="typing"></span>
+  </h2>
+
+  <p class="desc">
+    I design and build modern, responsive web applications with clean interfaces,
+    real-time functionality, and smooth user experiences tailored for both personal and business needs.
+  </p>
+
+  <p class="desc">
+    I focus on performance, aesthetics, and usability — turning ideas into fast, interactive, and professional web solutions.
+  </p>
+
+  <p class="desc">📩 Send me a message here, or use the link below for a direct conversation.</p>
+
+  <p class="arrow">👇</p>
+
+<script>
+    const texts = [
+  "Web Developer 💻",
+  "UI/UX Designer 🎨",
+  "Modern UI Specialist ✨",
+  "Frontend Engineer ⚡"
+];
+
+let index = 0;
+let charIndex = 0;
+let isDeleting = false;
+let speed = 100;
+
+function type() {
+  const typingEl = document.getElementById("typing");
+  let currentText = texts[index];
+
+  if (!isDeleting) {
+    typingEl.textContent = currentText.substring(0, charIndex++);
+    if (charIndex > currentText.length) {
+      isDeleting = true;
+      speed = 60;
+      setTimeout(type, 1500);
+      return;
+    }
+  } else {
+    typingEl.textContent = currentText.substring(0, charIndex--);
+    if (charIndex < 0) {
+      isDeleting = false;
+      index = (index + 1) % texts.length;
+      speed = 100;
+    }
+  }
+
+  setTimeout(type, speed);
+}
+
+type();
+
+
+
+
+    </script>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+
+</div>
+
+<button class="hirebtn" onclick="window.open('https://wa.me/2349158487236')">
+Hire Me
+</button>
+
+
+<div class="hero-img">
+  <img src="https://cdn-icons-png.flaticon.com/512/2721/2721297.png" alt="hero icon">
+</div>
+
+
+</body>
+</html>
+</div>
+
+<div class="category-hero">
+  <img class="illustration" src="https://cdn-icons-png.flaticon.com/512/2920/2920277.png" alt="Categories Illustration">
+
+  <h2>Here Are The Website Categories</h2>
+  <div class="sub">Explore different sections below</div>
+  <p class="arrow">👇</p>
+</div>
+
+</section>
 <section class="services">
+    <div class="card-container">
+<div class="card-container">
+
 <div class="card">
 <img src="https://cdn-icons-png.flaticon.com/512/1828/1828919.png">
-<h3>🖼️ Portfolio Websites</h3>
-<p>Showcase your personal or professional work beautifully.</p>
+<h3>🖼️👩‍💻Portfolio Websites</h3>
+<p>✨ Showcase your work with a clean, professional layout built to impress and attract clients.</p>
 </div>
+
 <div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
-<h3>🏢 Business Websites</h3>
-<p>Modern websites for businesses, shops and startups.</p>
+  <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+  <h3>💼🗃️ Business Websites</h3>
+  <p>📌 Perfect for shops & startups looking to build a strong online presence and attract customers.</p>
 </div>
+
 <div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/2942/2942789.png">
-<h3>🏫⛪ School & Organization</h3>
-<p>Professional websites for schools, churches and groups.</p>
+  <img src="https://cdn-icons-png.flaticon.com/512/2942/2942789.png">
+  <h3>🏘️🏛️ Organizations</h3>
+  <p>📚 Ideal for schools, churches & associations to share updates, events, and important information.</p>
+</div>
+
+<div class="card">
+  <img src="https://cdn-icons-png.flaticon.com/512/2965/2965879.png">
+  <h3>📰 Blog / News</h3>
+  <p>🖊️ A dynamic platform for publishing articles, breaking news, and trending stories with speed.</p>
+</div>
+
+<div class="card">
+  <img src="https://cdn-icons-png.flaticon.com/512/1946/1946436.png">
+  <h3>🏡 Real Estate</h3>
+  <p>📍 Beautiful property listings with images, pricing, filters, and location features.</p>
+</div>
+
+<div class="card">
+  <img src="https://cdn-icons-png.flaticon.com/512/3159/3159066.png">
+  <h3>🤝 Non-Profit</h3>
+  <p>❤️ Inspire support with donation pages, volunteer forms & impact stories.</p>
+</div>
+
+<div class="card">
+  <img src="https://cdn-icons-png.flaticon.com/512/2830/2830284.png">
+  <h3>⚖️ Law Firm</h3>
+  <p>📄 Clean and authoritative design with attorney profiles, practice areas & easy consultation booking.</p>
+</div>
+
+<div class="card">
+  <img src="https://cdn-icons-png.flaticon.com/512/825/825540.png">
+  <h3>💰 Crypto</h3>
+  <p>🔗 Sleek blockchain-focused layouts with token data, charts, roadmap & user education.</p>
+</div>
+
+<div class="card">
+  <img src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png">
+  <h3>🛍️ E-Commerce</h3>
+  <p>🛒 A complete online store with secure payments, product catalogs & order tracking.</p>
+</div>
+
+<div class="card">
+  <img src="https://cdn-icons-png.flaticon.com/512/727/727245.png">
+  <h3>🎵 Music</h3>
+  <p>🎧 Stream music, show albums, list events & sell merchandise all in one stylish platform.</p>
+</div>
+
 </div>
 </section>
 
@@ -114,64 +1008,159 @@ Let me create something amazing for you! 💪</p>
 <div id="messages"></div>
 </section>
 
-<footer>Contact: <a href="mailto:enioladickson63@gmail.com" style="color:#00c6ff;">enioladickson63@gmail.com</a></footer>
+<footer>Contact 📧 Email: <a href="mailto:enioladickson63@gmail.com" style="color:#00c6ff;font-weight:600;">enioladickson63@gmail.com</a></footer>
 
-<!-- Floating chat -->
+
+<!-- FLOATING CHAT BUTTON -->
 <div class="chat-btn" onclick="toggleChat()">💬</div>
+
+<!-- FLOATING CHAT WINDOW -->
 <div class="chat-box" id="chatBox">
-<div class="chat-header">Customer Service</div>
-<div class="chat-messages" id="chatMessages"></div>
-<div class="chat-input">
-<input type="text" id="chatInput" placeholder="Type your message...">
-<button onclick="sendChat()">Send</button>
+    <div class="chat-header">
+        Customer Support
+
+        <span class="close-chat" onclick="toggleChat()">✖</span>
+    </div>
+
+    <div class="chat-messages" id="chatMessages"></div>
+
+    <div class="chat-input">
+        <input id="chatInput" placeholder="Type your message...">
+        <button onclick="sendChat()">Send</button>
+    </div>
 </div>
+<div>
+
+<footer>
+© 2026 This Website was Designed & Developed by 🥀Eniola~Dickson✨.
+</footer>
 </div>
 
 <script src="/socket.io/socket.io.js"></script>
+
 <script>
+// Connect to server
 const socket = io();
 
-// Contact form message
-function sendMessage(){
-  const name=document.getElementById('name').value;
-  const email=document.getElementById('email').value;
-  const phone=document.getElementById('phone').value;
-  const message=document.getElementById('message').value;
-  if(!name||!email||!message) return alert('Fill all fields!');
-  socket.emit('userMessage',{name,email,phone,message});
-  document.getElementById('message').value='';
+/* ============================
+   CONTACT FORM MESSAGE (FULL)
+===============================*/
+function sendMessage() {
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const phone = document.getElementById("phone").value;
+  const message = document.getElementById("message").value;
+
+  if (!name || !email || !message) {
+    alert("Fill all fields!");
+    return;
+  }
+
+  socket.emit("userMessage", {
+    name,
+    email,
+    phone,
+    message,
+  });
+
+  document.getElementById("message").value = "";
 }
 
-// Toggle chat box
-function toggleChat(){
-  const box=document.getElementById('chatBox');
-  box.style.display = box.style.display==='flex'?'none':'flex';
+/* ============================
+   FLOATING CHAT BOX TOGGLE
+===============================*/
+function toggleChat() {
+  const box = document.getElementById("chatBox");
+  box.style.display = box.style.display === "flex" ? "none" : "flex";
 }
 
-// Floating chat send
-function sendChat(){
-  const input=document.getElementById('chatInput');
-  const text=input.value;
-  if(!text) return;
-  socket.emit('userMessage',{name:'Guest',message:text});
-  input.value='';
+/* ============================
+   FLOATING CHAT SEND
+===============================*/
+function sendChat() {
+  const input = document.getElementById("chatInput");
+  const text = input.value;
+
+  if (!text) return;
+
+  socket.emit("userMessage", {
+    name: "Guest",
+    message: text,
+  });
+
+  input.value = "";
 }
 
-// Receive messages & replies
-socket.on('messageUpdate', messages=>{
-  const container=document.getElementById('messages');
-  const chatContainer=document.getElementById('chatMessages');
-  container.innerHTML='';
-  chatContainer.innerHTML='';
-  messages.forEach(m=>{
-    const div=document.createElement('div');
-    div.classList.add('message');
-    div.innerHTML=`<b>${m.name}:</b> ${m.message}<br><span style="font-size:0.8em;color:#666;">${new Date(m.id).toLocaleString()}</span>`;
-    if(m.reply) div.innerHTML+=`<span class="reply"><b>Reply:</b> ${m.reply}</span>`;
-    container.appendChild(div);
-    chatContainer.appendChild(div.cloneNode(true));
+/* ============================
+   RECEIVE MESSAGE UPDATES
+===============================*/
+socket.on("messageUpdate", (messages) => {
+  const container = document.getElementById("messages");
+  const chatContainer = document.getElementById("chatMessages");
+
+  container.innerHTML = "";
+  chatContainer.innerHTML = "";
+
+  messages.forEach((m) => {
+    const isAdmin = (m.name || "").toLowerCase() === "admin";
+
+    const icon = isAdmin ? "👩‍💻" : "🙎";
+    const align = isAdmin ? "flex-end" : "flex-start";
+    const bg = isAdmin ? "#d1f7d6" : "#2563eb";
+
+    const time = new Date(m.id).toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+
+    const wrapper = document.createElement("div");
+    wrapper.style.display = "flex";
+    wrapper.style.justifyContent = align;
+    wrapper.style.marginBottom = "10px";
+
+    const bubble = document.createElement("div");
+    bubble.style.maxWidth = "75%";
+    bubble.style.padding = "10px";
+    bubble.style.borderRadius = "12px";
+    bubble.style.background = bg;
+    bubble.style.boxShadow = "0 2px 6px rgba(0,0,0,0.1)";
+
+    bubble.innerHTML = `
+      <b>${icon} ${m.name}</b><br>
+      ${m.message}
+      <br>
+      <span style="font-size:0.75em;color:#555;">${time}</span>
+    `;
+
+    // If admin replied
+    if (m.reply) {
+      const reply = document.createElement("div");
+      reply.style.marginTop = "5px";
+      reply.style.padding = "8px";
+      reply.style.borderLeft = "3px solid #333";
+      reply.style.background = "#32CD32";
+      reply.style.borderRadius = "8px";
+
+      reply.innerHTML = `<b>👩‍💻 Admin Reply:</b><br>${m.reply}`;
+
+      bubble.appendChild(reply);
+    }
+
+    wrapper.appendChild(bubble);
+
+    container.appendChild(wrapper);
+    chatContainer.appendChild(wrapper.cloneNode(true));
   });
 });
+
+/* ============================
+   ADMIN TYPING INDICATOR
+===============================*/
+socket.on("adminTyping", () => {
+  const el = document.getElementById("typingIndicator");
+  if (el) el.style.display = "block";
+});
 </script>
+
 </body>
 </html>
