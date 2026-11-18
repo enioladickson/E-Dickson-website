@@ -37,6 +37,62 @@
     "email": "enioladickson63@gmail.com",
     "phone": "09158487236",
     "message": "Hello",
-    "reply": "Hi"
+    "reply": "Hello"
+  },
+  {
+    "id": 1781932319750,
+    "name": "Guest",
+    "email": "",
+    "phone": "",
+    "message": "How are you doing ",
+    "reply": "I'm good 😊"
+  },
+  {
+    "id": 1781932489358,
+    "name": "Guest",
+    "email": "",
+    "phone": "",
+    "message": "Alright cool ",
+    "reply": "Ok"
+  },
+  {
+    "id": 1793984876635,
+    "name": "Guest",
+    "email": "",
+    "phone": "",
+    "message": "Hi",
+    "reply": "Hello"
+  },
+  {
+    "id": 1794918057655,
+    "name": "Guest",
+    "email": "",
+    "phone": "",
+    "message": "Hi",
+    "reply": "Hay"
+  },
+  {
+    "id": 1794983158811,
+    "name": "Guest",
+    "email": "",
+    "phone": "",
+    "message": "How are you doing",
+    "reply": "I'm good ooo"
+  },
+  {
+    "id": 1794985875242,
+    "name": "Eniola Dickson",
+    "email": "enioladickson63@gmail.com",
+    "phone": "9158487236",
+    "message": "I need a business license",
+    "reply": "I don't do license I can only build you a website"
+  },
+  {
+    "id": 1794986078481,
+    "name": "Mr p",
+    "email": "summerv1978@gmail.com",
+    "phone": "225220227",
+    "message": "I need a portfolio website",
+    "reply": null
   }
 ]
