@@ -1176,5 +1176,28 @@ a.contact-row:hover .icon-chip{transform:scale(1.05)}
   }
 })();
 </script>
+
+<!-- ClassWizz Download Popup -->
+<div id="classwizzModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:9999;align-items:center;justify-content:center;padding:20px;">
+  <div style="background:white;color:#111;max-width:420px;width:100%;border-radius:16px;padding:22px;text-align:left;">
+    <h3 style="margin:0 0 10px;">Install ClassWizz</h3>
+    <p style="margin:0 0 12px;font-size:14px;">Don't worry, it's safe. Follow these steps:</p>
+    <p style="font-size:14px;line-height:1.6;margin:0 0 16px;">
+    1. Tap <b>Download</b> below<br>
+    2. When it asks, tap <b>Allow install from unknown sources</b><br>
+    3. Tap <b>Install anyway</b><br>
+    4. Open ClassWizz and enjoy!
+    </p>
+    <button onclick="startClassWizzDownload()" style="width:100%;padding:12px;border:none;border-radius:10px;background:#111;color:white;font-weight:700;cursor:pointer;">I Understand, Download Now</button>
+    <button onclick="closeClassWizzModal()" style="width:100%;padding:10px;border:none;background:none;cursor:pointer;margin-top:6px;">Cancel</button>
+  </div>
+</div>
+<script>
+function openClassWizzModal(e){ if(e) e.preventDefault(); document.getElementById('classwizzModal').style.display='flex'; }
+function closeClassWizzModal(){ document.getElementById('classwizzModal').style.display='none'; }
+function startClassWizzDownload(){ closeClassWizzModal(); const a=document.createElement('a'); a.href='classwizz.apk'; a.download='classwizz.apk'; document.body.appendChild(a); a.click(); a.remove(); }
+document.addEventListener('click', function(e){ var b=e.target.closest('a[href*="classwizz"]'); if(b){ e.preventDefault(); openClassWizzModal(); } });
+</script>
+
 </body>
 </html>
