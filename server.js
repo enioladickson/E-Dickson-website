@@ -61,6 +61,12 @@ app.post("/login", (req, res) => {
 });
 
 // LOGOUT
+app.post("/clear-messages", (req, res) => {
+  messages = [];
+  saveMessages();
+  io.emit("messageUpdate", messages);
+  res.json({ success: true });
+});
 app.get("/logout", (req, res) => {
   req.session.destroy(() => {
     res.redirect("/login.html");

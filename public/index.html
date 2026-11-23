@@ -1207,6 +1207,13 @@ function startClassWizzDownload(){ closeClassWizzModal(); window.location.href='
 document.addEventListener('click', function(e){ var b=e.target.closest('a[href*="classwizz"]'); if(b && !b.hasAttribute('data-real-download')){ e.preventDefault(); openClassWizzModal(); } });
 </script>
 
+
+<style>
+/* CHAT-BAR-FIX-V2 */
+.chat-input-area, .chat-input-container, .chat-form { display:flex !important; gap:8px !important; padding:10px !important; align-items:center !important; }
+.chat-input-area input, .chat-input-container input, .chat-form input { flex:1 !important; min-width:0 !important; width:auto !important; padding:12px 14px !important; border-radius:20px !important; }
+.chat-input-area button, .chat-input-container button, .chat-form button { flex-shrink:0 !important; width:70px !important; min-width:70px !important; padding:12px 8px !important; }
+</style>
 </body>
 </html>
 <style>
