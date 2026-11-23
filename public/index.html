@@ -404,11 +404,11 @@ a.contact-row:hover .icon-chip{transform:scale(1.05)}
 .chat-head button:hover{color:#fff}
 .chat-messages{flex:1;display:flex;flex-direction:column;gap:10px;overflow-y:auto;background:rgba(1,0,47,.9);padding:16px;font-size:14px}
 .chat-typing{display:none;padding:0 16px 8px;background:rgba(1,0,47,.9);font-family:var(--mono);font-size:11px;color:var(--primary)}
-.chat-form{display:flex;align-items:center;gap:8px;border-top:1px solid rgba(0,255,200,.2);background:var(--panel);padding:12px}
-.chat-form input{flex:1;min-width:0;border-radius:8px;border:1px solid rgba(0,255,200,.2);background:rgba(0,0,0,.5);padding:10px 12px;font-size:12px;color:#fff}
+.chat-form{display:flex;align-items:center;gap:10px;border-top:1px solid rgba(0,255,200,.2);background:var(--panel);padding:14px}
+.chat-form input{flex:1;min-width:0;border-radius:12px;border:1px solid rgba(0,255,200,.2);background:rgba(0,0,0,.5);padding:14px 14px;font-size:16px;color:#fff}
 .chat-form input:focus{border-color:var(--primary)}
 .chat-form input::placeholder{color:rgba(151,171,186,.6)}
-.chat-form .btn{height:40px;padding:0 16px;font-size:12px}
+.chat-form .btn{height:52px;min-width:76px;padding:0 18px;font-size:15px;flex-shrink:0;white-space:nowrap}
 
 /* messages */
 .msg-row{display:flex}
@@ -436,6 +436,14 @@ a.contact-row:hover .icon-chip{transform:scale(1.05)}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
   .js .reveal{opacity:1;transform:none}
+}
+
+/* CHAT-BOX-PHONE-FIX */
+@media (max-width: 600px) {
+  .chat-box { left:12px !important; right:12px !important; width:auto !important; bottom:100px !important; height:70vh !important; max-height:70vh !important; }
+  .chat-form { padding:14px !important; gap:10px !important; }
+  .chat-form input { font-size:16px !important; padding:14px !important; }
+  .chat-form .btn { height:52px !important; min-width:76px !important; font-size:15px !important; }
 }
 </style>
 
