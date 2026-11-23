@@ -6,17 +6,16 @@ const path = require("path");
 const fs = require("fs");
 const session = require("express-session");
 const bcrypt = require("bcryptjs");
-const nodemailer = require("nodemailer");
+const { Resend } = require("resend");
+
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER || "enioladickson63@gmail.com",
-    pass: process.env.EMAIL_PASS
-  }
-});
+
+// === RESEND SETUP ===
+const resend = new Resend(process.env.RESEND_API_KEY);
+const EMAIL_TO = process.env.EMAIL_TO || "enioladickson63@gmail.com";
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -33,10 +32,10 @@ app.use(
 // STATIC FILES
 app.use(express.static(path.join(__dirname, "public")));
 
-// STORE ADMIN ACCOUNT HERE
+// STORE ADMIN ACCOUNT HERE - NOW FROM .env, NOT HARD-CODED
 const adminUser = {
   username: "enioladickson63",
-  passwordHash: bcrypt.hashSync("kayode1978")
+  passwordHash: bcrypt.hashSync(process.env.ADMIN_PASSWORD || "change-me")
 };
 
 // AUTH MIDDLEWARE
@@ -73,7 +72,7 @@ app.get("/admin", requireLogin, (req, res) => {
   res.sendFile(path.join(__dirname, "public", "admin.html"));
 });
 
-// ============ CHAT SYSTEM (UNCHANGED) ============
+// ============ CHAT SYSTEM ============
 let messages = fs.existsSync(path.join(__dirname, "messages.json"))
   ? JSON.parse(fs.readFileSync(path.join(__dirname, "messages.json")))
   : [];
@@ -84,13 +83,14 @@ function saveMessages() {
     JSON.stringify(messages, null, 2)
   );
 }
+
 io.on("connection", (socket) => {
   console.log("⚡ New client connected");
 
   socket.emit("messageUpdate", messages);
 
   // USER MESSAGE
-  socket.on("userMessage", (msg) => {
+  socket.on("userMessage", async (msg) => {
     const newMsg = {
       id: Date.now(),
       name: msg.name,
@@ -104,27 +104,19 @@ io.on("connection", (socket) => {
     saveMessages();
     io.emit("messageUpdate", messages);
 
-    // EMAIL NOTIFICATION
-    const mailOptions = {
-      from: "enioladickson63@gmail.com",
-      to: "enioladickson63@gmail.com",
-      subject: "New Website Message",
-      text: `
-Name: ${msg.name}
-Email: ${msg.email}
-Phone: ${msg.phone}
-Message: ${msg.message}
-      `
-    };
-
-    transporter.sendMail(mailOptions, (err, info) => {
-      if (err) {
-        console.log("Email failed:", err);
-      } else {
-        console.log("Email sent successfully");
-      }
-    });
-  }); // ✅ CLOSE userMessage properly
+    // EMAIL NOTIFICATION VIA RESEND
+    try {
+      await resend.emails.send({
+        from: "E-Dickson Website <onboarding@resend.dev>",
+        to: EMAIL_TO,
+        subject: "New Website Message",
+        text: `Name: ${msg.name}\nEmail: ${msg.email || "Not provided"}\nPhone: ${msg.phone || "Not provided"}\nMessage: ${msg.message}`
+      });
+      console.log("✅ Email sent via Resend");
+    } catch (err) {
+      console.log("❌ Email failed:", err.message);
+    }
+  });
 
   // ADMIN REPLY
   socket.on("adminReply", ({ id, reply }) => {
@@ -140,8 +132,9 @@ Message: ${msg.message}
   socket.on("disconnect", () => {
     console.log("⚡ Client disconnected");
   });
-}); // ✅ CLOSE io.on properly
+});
 
-server.listen(3000, "0.0.0.0", () => {
-  console.log("🚀 Server running at http://127.0.0.1:3000");
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, "0.0.0.0", () => {
+  console.log(`🚀 Server running at http://127.0.0.1:${PORT}`);
 });
