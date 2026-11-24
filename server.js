@@ -81,6 +81,22 @@ app.get("/admin", requireLogin, (req, res) => {
   res.sendFile(path.join(__dirname, "public", "admin.html"));
 });
 
+// TEST EMAIL ROUTE
+app.get("/api/test-email", async (req, res) => {
+  try {
+    await resend.emails.send({
+      from: "E-Dickson Website <onboarding@resend.dev>",
+      to: EMAIL_TO,
+      subject: "Test Email from Railway",
+      text: "If you see this, Resend is working on Railway!"
+    });
+    res.json({ ok: true, message: "Test email sent" });
+  } catch (err) {
+    console.log("Email failed:", err.message);
+    res.json({ ok: false, error: err.message });
+  }
+});
+
 // ============ CHAT SYSTEM ============
 let messages = fs.existsSync(path.join(__dirname, "messages.json"))
   ? JSON.parse(fs.readFileSync(path.join(__dirname, "messages.json")))
@@ -145,5 +161,5 @@ io.on("connection", (socket) => {
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, "0.0.0.0", () => {
-  console.log(`🚀 Server running at http://127.0.0.1:${PORT}`);
+  console.log(`🚀 Server running on port ${PORT}`);
 });
