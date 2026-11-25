@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E~Dickson | Web Developer &amp; UI/UX Designer</title>
+<meta name="description" content="E~Dickson (Eniola Dickson) — web developer and UI/UX designer in Lagos, Nigeria. Modern, fast, real-time web applications for businesses and creators.">
+<meta name="theme-color" content="#01003d">
+<meta property="og:type" content="website">
+<meta property="og:title" content="E~Dickson | Web Developer &amp; UI/UX Designer">
+<meta property="og:description" content="Modern, fast, real-time web applications for businesses and creators — Lagos, Nigeria.">
+<meta property="og:image" content="logo.png">
+<link rel="icon" href="logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700;1,800;1,900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script>document.documentElement.classList.add('js');</script>
+
+<style>
+/* =========================================================
+   E~Dickson — hand-written stylesheet (no frameworks)
+   ========================================================= */
+:root{
+  --bg:#01003d;
+  --bg-deep:#00002b;
+  --panel:#07044f;
+  --card:rgba(7,3,42,.65);
+  --primary:#00ffc8;
+  --primary-rgb:0,255,200;
+  --secondary:#0084ff;
+  --accent:#9d4edd;
+  --fg:#eaf5f2;
+  --text:#d1d5db;
+  --muted:#97abba;
+  --line:rgba(0,255,200,.15);
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'Space Grotesk',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --header-h:80px;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:88px;-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);color:var(--fg);font-family:var(--sans);line-height:1.5;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;min-height:100vh;
+}
+img,svg{display:block;max-width:100%}
+img{height:auto}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button,input,textarea{font:inherit;color:inherit;background:none;border:0;outline:0}
+button{cursor:pointer}
+textarea{resize:none}
+::selection{background:var(--primary);color:#000}
+:focus-visible{outline:2px solid var(--primary);outline-offset:3px}
+
+.skip-link{position:absolute;left:-999px;top:8px;z-index:100;background:var(--primary);color:#000;padding:8px 14px;border-radius:8px;font-weight:700}
+.skip-link:focus{left:8px}
+.container{width:100%;max-width:1280px;margin:0 auto;padding:0 24px}
+
+/* ---------- icons ---------- */
+.icon{width:20px;height:20px;flex-shrink:0}
+.icon-sm{width:16px;height:16px}
+.icon-lg{width:24px;height:24px}
+.icon-xl{width:28px;height:28px}
+
+/* ---------- helpers ---------- */
+.text-gradient{background:linear-gradient(135deg,#00ffc8 0%,#00b4d8 50%,#9d4edd 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.text-gradient-cyan{background:linear-gradient(90deg,#00ffc8,#0084ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.bar-gradient{background:linear-gradient(90deg,#00ffc8,#0084ff,#9d4edd)}
+
+.eyebrow{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.25em;color:var(--primary);text-transform:uppercase}
+.section-title{margin-top:12px;font-family:var(--serif);font-size:clamp(2.25rem,5vw,3.5rem);line-height:1.05;font-weight:700;letter-spacing:-.025em;color:#fff}
+.section-title.sm{font-size:clamp(2rem,4vw,2.25rem)}
+.section-sub{max-width:28rem;font-size:15px;line-height:1.7;color:var(--muted)}
+.center{text-align:center}
+.center .section-sub{margin-inline:auto}
+
+.glass{border:1px solid var(--line);background:var(--card);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px)}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:12px;font-size:14px;font-weight:700;letter-spacing:.025em;white-space:nowrap;transition:all .3s;text-align:center}
+.btn:active{transform:scale(.98)}
+.btn-md{height:40px;padding:0 20px}
+.btn-lg{height:52px;padding:0 32px;font-size:15px}
+.btn-block{width:100%}
+.btn-primary{background:linear-gradient(135deg,var(--primary),var(--secondary));color:#000;box-shadow:0 0 25px rgba(var(--primary-rgb),.35)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 40px rgba(var(--primary-rgb),.55)}
+.btn-outline{border:1px solid rgba(var(--primary-rgb),.3);background:rgba(var(--primary-rgb),.05);font-weight:500;color:var(--fg)}
+.btn-outline:hover{transform:translateY(-2px);border-color:var(--primary);background:rgba(var(--primary-rgb),.1);color:var(--primary)}
+.btn-ghost{height:52px;padding:0 20px;border-radius:12px;font-family:var(--mono);font-size:14px;color:var(--text);display:inline-flex;align-items:center;gap:8px;transition:all .3s}
+.btn-ghost:hover{border-color:var(--primary);color:#fff}
+
+/* ---------- chips ---------- */
+.chip{display:inline-flex;align-items:center;border-radius:999px;border:1px solid;padding:4px 12px;font-family:var(--mono);font-size:12px;font-weight:500}
+.chip-cyan{border-color:rgba(0,255,200,.3);background:rgba(0,255,200,.1);color:var(--primary)}
+.chip-blue{border-color:rgba(0,132,255,.3);background:rgba(0,132,255,.1);color:#7dd3fc}
+.chip-purple{border-color:rgba(157,78,221,.3);background:rgba(157,78,221,.1);color:#d8b4fe}
+.chip-green{border-color:rgba(52,211,153,.3);background:rgba(16,185,129,.1);color:#6ee7b7}
+
+.icon-chip{display:grid;place-items:center;width:48px;height:48px;flex-shrink:0;border-radius:12px;border:1px solid;transition:transform .3s}
+.icon-chip.sm{width:44px;height:44px}
+.tone-cyan{border-color:rgba(0,255,200,.3);background:rgba(0,255,200,.1);color:var(--primary)}
+.tone-blue{border-color:rgba(0,132,255,.3);background:rgba(0,132,255,.1);color:#7dd3fc}
+.tone-purple{border-color:rgba(157,78,221,.3);background:rgba(157,78,221,.1);color:#d8b4fe}
+.tone-green{border-color:rgba(52,211,153,.3);background:rgba(16,185,129,.1);color:#6ee7b7}
+.tone-indigo{border-color:rgba(129,140,248,.3);background:rgba(99,102,241,.1);color:#a5b4fc}
+
+/* ---------- card effects ---------- */
+.card-lift{transition:all .3s}
+.card-lift:hover{transform:translateY(-8px);border-color:rgba(0,255,200,.45);box-shadow:0 20px 45px -10px rgba(0,255,200,.15),0 0 20px rgba(157,78,221,.2)}
+.spot{position:relative;isolation:isolate}
+.spot::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;opacity:0;transition:opacity .3s;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(0,255,200,.13),transparent 60%);pointer-events:none}
+.spot:hover::before{opacity:1}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+.site-header{position:fixed;inset:0 0 auto 0;z-index:50;background:rgba(5,0,61,.8);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);border-bottom:1px solid rgba(0,255,200,.1)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;height:var(--header-h)}
+.brand{display:flex;align-items:center;gap:14px;min-width:0}
+.logo-box{position:relative;display:grid;place-items:center;width:44px;height:44px;flex-shrink:0;overflow:hidden;border-radius:12px;border:1px solid rgba(0,255,200,.4);background:linear-gradient(135deg,var(--primary),var(--secondary));font-family:var(--serif);font-size:14px;font-weight:700;color:#000;box-shadow:0 0 20px rgba(0,255,200,.2)}
+.logo-box img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.brand-text{display:flex;flex-direction:column;line-height:1.25;min-width:0}
+.brand-name{font-family:var(--serif);font-size:18px;font-weight:700;letter-spacing:.025em;white-space:nowrap}
+.brand-tag{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+
+.nav-desktop{display:none;align-items:center;gap:32px}
+.nav-link{font-size:14px;font-weight:500;color:var(--text);transition:color .2s}
+.nav-link:hover,.nav-link.active{color:var(--primary)}
+
+.header-actions{display:none;align-items:center;gap:16px}
+.live-btn{display:flex;align-items:center;gap:8px;border-radius:8px;border:1px solid rgba(0,255,200,.3);background:rgba(0,255,200,.1);padding:8px 14px;font-family:var(--mono);font-size:12px;font-weight:500;color:var(--primary);transition:background .2s}
+.live-btn:hover{background:rgba(0,255,200,.2)}
+.beacon{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--primary);animation:beacon 2s infinite cubic-bezier(.4,0,.6,1)}
+.beacon.lg{width:16px;height:16px}
+.beacon.md{width:10px;height:10px}
+
+.menu-btn{padding:8px;color:var(--primary)}
+.mobile-menu{display:none;border-top:1px solid rgba(0,255,200,.2);padding:20px 24px 24px;background:var(--card);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px)}
+.mobile-menu.open{display:block}
+.mobile-menu a.m-link{display:block;border-radius:8px;padding:12px;font-weight:500;color:#e5e7eb}
+.mobile-menu a.m-link:hover{background:rgba(0,255,200,.1);color:var(--primary)}
+.mobile-menu .btn{margin-top:16px}
+
+@media (min-width:640px){.header-actions{display:flex}}
+@media (min-width:768px){.nav-desktop{display:flex}.menu-btn,.mobile-menu{display:none!important}}
+@media (max-width:420px){.brand-tag{display:none}.brand-name{font-size:16px}}
+
+/* =========================================================
+   ZONES
+   ========================================================= */
+.zone-violet{
+  position:relative;overflow:hidden;padding-top:var(--header-h);
+  background:radial-gradient(52rem 38rem at 88% 32%,rgba(255,255,255,.12),transparent 62%),
+             linear-gradient(90deg,#a94dfc 0%,#9440f4 30%,#7a2ee6 62%,#5f1fd0 100%);
+  --muted:#f3ebfb;
+  --line:rgba(255,255,255,.15);
+}
+.zone-violet::after{content:"";position:absolute;inset:auto 0 0 0;height:9rem;z-index:0;pointer-events:none;background:linear-gradient(to bottom,transparent,#01003d)}
+.zone-violet>section{position:relative;z-index:1}
+.zone-violet .eyebrow{color:#f3e8ff}
+.zone-violet .text-gradient{background:linear-gradient(135deg,#fff 0%,#d9fff6 55%,#9ff3ff 100%);-webkit-background-clip:text;background-clip:text}
+
+.zone-navy{position:relative;overflow:hidden;background:var(--bg)}
+.zone-navy>*{position:relative;z-index:1}
+.zone-navy>.curves,.zone-navy>.ghost-ring{position:absolute;z-index:0;pointer-events:none}
+.curves{width:min(26rem,70vw);aspect-ratio:400/260;height:auto}
+.curves-tl{top:0;left:0}
+.curves-br{right:0;bottom:0;transform:rotate(180deg);opacity:.75}
+.ghost-ring{right:-12rem;top:6rem;width:44rem;height:44rem;border-radius:50%;background:linear-gradient(90deg,rgba(18,0,79,0),rgba(10,38,120,.28))}
+
+.section{padding:96px 0;border-top:1px solid rgba(0,255,200,.1)}
+@media (min-width:1024px){.section{padding:128px 0}}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+#home{display:flex;align-items:center;min-height:calc(100vh - var(--header-h));padding:56px 0;overflow:hidden;border-top:0}
+@media (min-width:1024px){#home{padding:80px 0}}
+.hero-orb{position:absolute;right:-10%;top:50%;width:44rem;height:44rem;transform:translateY(-50%);border-radius:50%;background:linear-gradient(270deg,rgba(255,255,255,.1),transparent);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:56px;align-items:center;position:relative}
+@media (min-width:1024px){.hero-grid{grid-template-columns:repeat(12,1fr);gap:32px}.hero-copy{grid-column:span 7}.hero-visual{grid-column:span 5}}
+.hero-copy>*+*{margin-top:32px}
+.hero-badge{display:inline-flex;align-items:center;gap:12px;border-radius:999px;padding:6px 16px;font-family:var(--mono);font-size:12px}
+.hero-badge span.t{font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--primary)}
+.zone-violet .hero-badge span.t{color:#fff}
+.hero-copy h1{font-family:var(--serif);font-size:clamp(2.4rem,5.6vw,4rem);font-weight:700;font-style:italic;line-height:1.08;letter-spacing:-.02em;width:fit-content;max-width:100%;padding:0 .12em .08em 0;color:#fff}
+.hero-copy h1 .text-gradient{background:linear-gradient(135deg,#fff 0%,#d9fff6 55%,#9ff3ff 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;padding-right:.08em}
+.headline-box{position:relative;width:fit-content;max-width:100%;overflow:hidden;padding:28px 36px 30px;border-radius:24px;border:1px solid rgba(255,255,255,.22);background:linear-gradient(135deg,rgba(7,3,42,.66),rgba(7,3,42,.42));-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);box-shadow:0 22px 55px rgba(20,0,70,.45),inset 0 1px 0 rgba(255,255,255,.2)}
+.headline-box::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:linear-gradient(90deg,#00ffc8,#0084ff,#9d4edd)}
+.headline-box::after{content:"";position:absolute;right:-60px;top:-60px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(0,255,200,.18),transparent 70%);pointer-events:none}
+@media (max-width:560px){.headline-box{padding:22px 20px 24px;border-radius:20px}}
+#about .section-title{font-style:italic;padding-right:.1em}
+.hero-typing{display:flex;align-items:center;min-height:36px;font-family:var(--mono);font-size:clamp(1.25rem,2.5vw,1.5rem);font-weight:600;color:#00ff41;text-shadow:0 0 8px rgba(0,255,65,.65),0 0 20px rgba(0,255,65,.3),0 1px 2px rgba(0,25,0,.55)}
+#typing{border-right:2px solid #00ff41;padding-right:6px;min-height:1.2em;box-shadow:2px 0 10px -2px rgba(0,255,65,.8)}
+.hero-desc{max-width:42rem;font-size:clamp(1rem,1.6vw,1.125rem);line-height:1.7;color:rgba(209,213,219,.95)}
+.hero-btns{display:flex;flex-wrap:wrap;align-items:center;gap:16px;padding-top:4px}
+.hero-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;border-top:1px solid rgba(255,255,255,.25);padding-top:32px}
+@media (min-width:640px){.hero-stats{grid-template-columns:repeat(4,1fr)}}
+.hero-stats>div{display:flex;flex-direction:column-reverse}
+.hero-stats dt{margin-top:4px;font-family:var(--mono);font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.hero-stats dd{font-family:var(--serif);font-size:clamp(1.875rem,4vw,2.25rem);font-weight:700;font-variant-numeric:tabular-nums;width:fit-content;background:linear-gradient(135deg,#00c8ff 0%,#00e5ff 35%,#00ff9c 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;filter:drop-shadow(0 2px 6px rgba(20,0,60,.45)) drop-shadow(0 0 10px rgba(0,255,156,.3))}
+
+/* showcase frame */
+.hero-visual{display:flex;justify-content:center}
+.frame{width:100%;max-width:28rem;aspect-ratio:1/1;border-radius:24px;padding:4px;background:linear-gradient(180deg,rgba(0,255,200,.4),rgba(157,78,221,.3),rgba(0,132,255,.3));box-shadow:0 0 60px rgba(0,255,200,.2)}
+.frame-inner{position:relative;display:flex;flex-direction:column;justify-content:space-between;width:100%;height:100%;overflow:hidden;border-radius:22px;border:1px solid rgba(0,255,200,.2);background:rgba(7,4,79,.9);padding:24px;-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px)}
+.frame-top{display:flex;align-items:center;justify-content:space-between}
+.dots{display:flex;gap:8px}
+.dots i{width:12px;height:12px;border-radius:50%}
+.dots i:nth-child(1){background:rgba(239,68,68,.8)}
+.dots i:nth-child(2){background:rgba(234,179,8,.8)}
+.dots i:nth-child(3){background:rgba(16,185,129,.8)}
+.status{border-radius:6px;border:1px solid rgba(0,255,200,.3);background:rgba(8,51,68,.6);padding:4px 10px;font-family:var(--mono);font-size:11px;color:rgba(0,255,200,.8)}
+.frame-mid{display:flex;flex-direction:column;align-items:center;text-align:center;margin:auto 0;padding:16px 0}
+.orbit{position:relative;display:grid;place-items:center;width:13rem;height:13rem}
+.ring{position:absolute;border-radius:50%}
+.ring-1{inset:0;border:1px solid rgba(0,255,200,.25);animation:spin 25s linear infinite}
+.ring-2{inset:16px;border:2px dashed rgba(157,78,221,.3);animation:spin 18s linear infinite reverse}
+.ring-3{inset:40px;background:linear-gradient(45deg,rgba(0,255,200,.3),rgba(0,132,255,.2),rgba(157,78,221,.4));filter:blur(24px)}
+.orbit-core{position:relative;width:9rem;height:9rem;overflow:hidden;border-radius:16px;border:1px solid rgba(103,232,249,.4);background:rgba(0,0,0,.6);box-shadow:0 0 30px rgba(0,255,200,.3);display:grid;place-items:center;transition:transform .5s}
+.orbit-core:hover{transform:scale(1.05)}
+.orbit-core .ed{font-family:var(--serif);font-size:42px;font-weight:700;color:var(--primary)}
+.orbit-core img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.orbit-core .cap{position:absolute;inset:auto 0 0 0;padding:10px;text-align:left;background:linear-gradient(0deg,rgba(0,0,0,.8),transparent);font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--primary)}
+.frame-mid h3{margin-top:16px;font-family:var(--serif);font-size:20px;font-weight:700;letter-spacing:.025em;color:#fff}
+.frame-mid p{margin:4px auto 0;max-width:260px;font-size:12px;color:var(--muted)}
+.frame-stack{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;border-top:1px solid rgba(0,255,200,.15);padding-top:12px}
+.frame-stack div{border-radius:8px;border:1px solid;padding:8px;text-align:center}
+.frame-stack b{display:block;font-family:var(--mono);font-size:12px}
+.frame-stack small{font-size:10px;color:var(--muted)}
+.frame-stack .s1{border-color:rgba(0,255,200,.2);background:rgba(0,255,200,.05)}.frame-stack .s1 b{color:var(--primary)}
+.frame-stack .s2{border-color:rgba(0,132,255,.2);background:rgba(0,132,255,.05)}.frame-stack .s2 b{color:#38bdf8}
+.frame-stack .s3{border-color:rgba(157,78,221,.2);background:rgba(157,78,221,.05)}.frame-stack .s3 b{color:#d8b4fe}
+
+/* =========================================================
+   ABOUT
+   ========================================================= */
+#about{padding-bottom:144px}
+.about-grid{display:grid;grid-template-columns:1fr;gap:56px;align-items:center}
+@media (min-width:1024px){.about-grid{grid-template-columns:repeat(12,1fr)}.about-profile{grid-column:span 5}.about-text{grid-column:span 7}}
+.about-head{max-width:48rem;margin:0 auto 64px;text-align:center}
+.about-head .section-sub{margin:12px auto 0}
+.about-profile{position:relative}
+.float-tag{position:absolute;z-index:10;display:flex;align-items:center;gap:8px;border-radius:12px;border:1px solid rgba(0,255,200,.25);background:rgba(7,3,42,.92);padding:10px 16px;font-size:13px;font-weight:600;box-shadow:0 0 30px rgba(0,255,200,.15)}
+.float-tag i{width:8px;height:8px;border-radius:50%;background:var(--primary)}
+.float-tag.tl{top:-20px;left:-12px}
+.float-tag.br{bottom:-20px;right:-12px}
+.profile-card{position:relative;overflow:hidden;border-radius:24px;border-color:rgba(0,255,200,.25);padding:32px;box-shadow:0 0 40px rgba(0,255,200,.1)}
+.profile-card .bar{position:absolute;inset:0 0 auto 0;height:4px}
+.avatar{position:relative;width:144px;height:144px;margin:0 auto 24px}
+.avatar-ring{position:absolute;inset:0;border-radius:50%;padding:4px;box-shadow:0 0 35px rgba(0,255,200,.4)}
+.avatar-in{position:relative;width:100%;height:100%;overflow:hidden;border-radius:50%;background:var(--panel);display:grid;place-items:center;font-family:var(--serif);font-size:36px;font-weight:700;color:var(--primary)}
+.avatar-in img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top}
+.avatar-live{position:absolute;right:-4px;bottom:-4px;border-radius:50%;border:1px solid var(--primary);background:#000;padding:6px}
+.profile-card h3{font-family:var(--serif);font-size:24px;font-weight:700;color:#fff;text-align:center}
+.profile-card .role{margin-top:8px;font-size:14px;color:var(--muted);text-align:center}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:28px;border-top:1px solid rgba(0,255,200,.15);padding-top:24px}
+.about-text>*+*{margin-top:20px}
+.about-item{border-radius:16px;border-left:4px solid;padding:24px;transition:all .3s}
+@media (min-width:640px){.about-item{padding:28px}}
+.about-item h4{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.about-item p{margin-top:8px;font-size:15px;line-height:1.7;color:var(--text)}
+.about-item.i1{border-left-color:var(--primary)}.about-item.i1 h4{color:var(--primary)}
+.about-item.i2{border-left-color:var(--secondary)}.about-item.i2 h4{color:#38bdf8}
+.about-item.i3{border-left-color:var(--accent)}.about-item.i3 h4{color:#c084fc}
+.about-item:hover{border-top-color:rgba(255,255,255,.35);border-right-color:rgba(255,255,255,.35);border-bottom-color:rgba(255,255,255,.35)}
+.about-cta{display:flex;flex-wrap:wrap;align-items:center;gap:16px;padding-top:8px}
+
+/* =========================================================
+   SERVICES
+   ========================================================= */
+.split-head{display:flex;flex-direction:column;justify-content:space-between;gap:24px;margin-bottom:64px}
+@media (min-width:768px){.split-head{flex-direction:row;align-items:flex-end}}
+.grid-3{display:grid;grid-template-columns:1fr;gap:24px}
+@media (min-width:768px){.grid-3{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1024px){.grid-3{grid-template-columns:repeat(3,1fr)}}
+.service{border-radius:16px;padding:28px}
+.service .icon-chip{margin-bottom:20px}
+.service:hover .icon-chip{transform:scale(1.1)}
+.service h3{margin-bottom:10px;font-family:var(--serif);font-size:20px;font-weight:700;color:#fff;transition:color .2s}
+.service p{font-size:14px;line-height:1.7;color:var(--muted)}
+.service.t-cyan:hover h3{color:var(--primary)}
+.service.t-blue:hover h3{color:#7dd3fc}
+.service.t-purple:hover h3{color:#d8b4fe}
+.service.t-green:hover h3{color:#6ee7b7}
+.service.t-indigo:hover h3{color:#a5b4fc}
+
+/* =========================================================
+   PORTFOLIO
+   ========================================================= */
+.filters{display:flex;align-items:center;gap:10px;overflow-x:auto;padding-bottom:16px;margin-bottom:32px;scrollbar-width:thin}
+.filter-btn{flex-shrink:0;border-radius:999px;border:1px solid rgba(0,255,200,.2);padding:8px 16px;font-family:var(--mono);font-size:12px;white-space:nowrap;color:var(--text);transition:all .3s}
+.filter-btn:hover{border-color:rgba(0,255,200,.5);color:#fff}
+.filter-btn[aria-pressed="true"]{border-color:var(--primary);background:rgba(0,255,200,.15);font-weight:600;color:var(--primary)}
+.project{display:block;overflow:hidden;border-radius:16px}
+.project[hidden]{display:none}
+.thumb{position:relative;aspect-ratio:16/10;overflow:hidden;background:linear-gradient(135deg,#14106b,#07044f);display:grid;place-items:center}
+.thumb .fb{color:rgba(0,255,200,.55)}
+.thumb .fb svg{width:56px;height:56px}
+.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.project:hover .thumb img{transform:scale(1.05)}
+.thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#01002f,rgba(1,0,47,.4),transparent);opacity:.8;transition:opacity .3s;pointer-events:none}
+.project:hover .thumb::after{opacity:.6}
+.badge{position:absolute;right:12px;top:12px;z-index:2;border-radius:6px;border:1px solid;background:rgba(0,0,0,.6);padding:4px 10px;font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.b-cyan{border-color:rgba(0,255,200,.4);color:var(--primary)}
+.b-blue{border-color:rgba(0,132,255,.4);color:#38bdf8}
+.b-purple{border-color:rgba(157,78,221,.4);color:#d8b4fe}
+.b-green{border-color:rgba(52,211,153,.4);color:#34d399}
+.project-body{padding:24px}
+.project-body>*+*{margin-top:8px}
+.project-body h3{font-family:var(--serif);font-size:20px;font-weight:700;color:#fff;transition:color .2s}
+.project-body p{font-size:12px;line-height:1.7;color:var(--muted)}
+.project-link{display:flex;align-items:center;justify-content:space-between;padding-top:12px;font-family:var(--mono);font-size:12px}
+.project-link span:last-child{transition:transform .3s}
+.project:hover .project-link span:last-child{transform:translateX(4px)}
+.project.t-cyan:hover h3,.project.t-cyan .project-link{color:var(--primary)}
+.project.t-blue:hover h3{color:#7dd3fc}.project.t-blue .project-link{color:#38bdf8}
+.project.t-purple:hover h3,.project.t-purple .project-link{color:#d8b4fe}
+.project.t-green:hover h3{color:#6ee7b7}.project.t-green .project-link{color:#34d399}
+.no-results{display:none;padding:24px;text-align:center;color:var(--muted)}
+
+/* =========================================================
+   TESTIMONIALS
+   ========================================================= */
+#testimonials{background:rgba(10,8,102,.2)}
+.testi{display:flex;flex-direction:column;justify-content:space-between;border-radius:16px;padding:32px}
+.stars{display:flex;gap:4px;color:#facc15;margin-bottom:16px}
+.stars svg{width:20px;height:20px}
+.testi blockquote{font-size:15px;font-style:italic;line-height:1.7;color:var(--text)}
+.testi figcaption{display:flex;align-items:center;gap:16px;margin-top:24px;border-top:1px solid rgba(0,255,200,.15);padding-top:24px}
+.avatar-sm{display:grid;place-items:center;width:44px;height:44px;flex-shrink:0;border-radius:50%;font-size:14px;font-weight:700;color:#000}
+.testi .nm{font-size:14px;font-weight:700;color:#fff}
+.testi .rl{font-size:12px;color:var(--muted)}
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+.contact-grid{display:grid;grid-template-columns:1fr;gap:48px}
+@media (min-width:1024px){.contact-grid{grid-template-columns:repeat(12,1fr)}.contact-info{grid-column:span 5}.contact-form{grid-column:span 7}}
+.contact-info>*+*{margin-top:32px}
+.contact-info p.lead{margin-top:16px;font-size:15px;line-height:1.7;color:var(--muted)}
+.contact-list>*+*{margin-top:16px}
+.contact-row{display:flex;align-items:center;gap:16px;border-radius:12px;padding:16px;transition:all .3s}
+a.contact-row:hover{border-color:var(--primary)}
+.contact-row .lbl{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.contact-row .val{font-size:14px;font-weight:500;color:#fff;transition:color .2s;word-break:break-word}
+a.contact-row:hover .val{color:var(--primary)}
+a.contact-row:hover .icon-chip{transform:scale(1.05)}
+.map{overflow:hidden;border-radius:12px;border:1px solid rgba(0,255,200,.2);box-shadow:0 4px 6px rgba(0,0,0,.1)}
+.map iframe{display:block;width:100%;height:208px;border:0;opacity:.8;filter:grayscale(80%) invert(90%) hue-rotate(180deg)}
+.form-card{position:relative;overflow:hidden;border-radius:24px;border-color:rgba(0,255,200,.25);padding:32px;box-shadow:0 25px 50px -12px rgba(0,0,0,.25)}
+@media (min-width:640px){.form-card{padding:40px}}
+.form-card .bar{position:absolute;inset:0 0 auto 0;height:4px}
+.form-card h3{font-family:var(--serif);font-size:24px;font-weight:700;color:#fff}
+.form-card .hint{margin:4px 0 32px;font-size:12px;color:var(--muted)}
+.form-card form>*+*{margin-top:20px}
+.row-2{display:grid;grid-template-columns:1fr;gap:20px}
+@media (min-width:640px){.row-2{grid-template-columns:repeat(2,1fr)}}
+.label{display:block;margin-bottom:8px;font-family:var(--mono);font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:#d1d5db}
+.field{width:100%;border-radius:12px;border:1px solid rgba(0,255,200,.2);background:rgba(0,0,0,.4);padding:14px 16px;font-size:14px;color:#fff;transition:border-color .2s,box-shadow .2s}
+.field::placeholder{color:rgba(151,171,186,.6)}
+.field:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(0,255,200,.15)}
+.form-status{min-height:20px;font-size:13px;color:var(--primary)}
+.form-status.err{color:#fca5a5}
+.msg-list{display:flex;flex-direction:column;gap:8px;max-height:288px;overflow-y:auto}
+.msg-list:empty{display:none}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.site-footer{position:relative;z-index:20;border-top:1px solid rgba(0,255,200,.15);background:rgba(0,0,43,.7);padding:56px 0}
+.footer-inner{display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:32px;text-align:center}
+@media (min-width:768px){.footer-inner{flex-direction:row;text-align:left}}
+.footer-brand{display:flex;align-items:center;gap:12px;text-align:left}
+.footer-brand p{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.footer-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.footer-nav a:hover{color:var(--primary)}
+.footer-meta{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.footer-meta p+p{margin-top:6px}
+.footer-meta a{font-weight:600;color:#38bdf8}
+.footer-meta a:hover{text-decoration:underline;text-underline-offset:4px}
+
+/* =========================================================
+   FLOATING + CHAT
+   ========================================================= */
+.fab{position:fixed;right:24px;z-index:40;display:grid;place-items:center;width:56px;height:56px;border-radius:50%;transition:transform .3s}
+.fab:hover{transform:scale(1.1)}
+.fab:active{transform:scale(.95)}
+.fab-wa{bottom:96px;background:#25D366;color:#fff;box-shadow:0 4px 25px rgba(37,211,102,.5)}
+.fab-chat{bottom:24px;z-index:50;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#000;box-shadow:0 4px 30px rgba(0,255,200,.4)}
+.fab svg{width:26px;height:26px}
+
+.chat-box{position:fixed;right:24px;bottom:168px;z-index:50;display:none;flex-direction:column;width:min(24rem,calc(100vw - 48px));height:30rem;max-height:calc(100vh - 12rem);overflow:hidden;border-radius:16px;border:1px solid rgba(0,255,200,.4);background:rgba(7,3,42,.92);-webkit-backdrop-filter:blur(40px);backdrop-filter:blur(40px);box-shadow:0 20px 50px rgba(0,0,0,.8)}
+.chat-box.open{display:flex}
+.chat-head{display:flex;align-items:center;justify-content:space-between;background:linear-gradient(90deg,var(--primary),var(--secondary),var(--accent));padding:16px 20px;font-size:14px;font-weight:700;color:#000}
+.chat-head .l{display:flex;align-items:center;gap:8px}
+.chat-head .pulse{width:10px;height:10px;border-radius:50%;background:#6ee7b7;animation:ping 1.2s cubic-bezier(0,0,.2,1) infinite}
+.chat-head button{padding:2px;line-height:0;color:#000;transition:color .2s}
+.chat-head button:hover{color:#fff}
+.chat-messages{flex:1;display:flex;flex-direction:column;gap:10px;overflow-y:auto;background:rgba(1,0,47,.9);padding:16px;font-size:14px}
+.chat-typing{display:none;padding:0 16px 8px;background:rgba(1,0,47,.9);font-family:var(--mono);font-size:11px;color:var(--primary)}
+.chat-form{display:flex;align-items:center;gap:10px;border-top:1px solid rgba(0,255,200,.2);background:var(--panel);padding:14px}
+.chat-form input{flex:1;min-width:0;border-radius:12px;border:1px solid rgba(0,255,200,.2);background:rgba(0,0,0,.5);padding:14px 14px;font-size:16px;color:#fff}
+.chat-form input:focus{border-color:var(--primary)}
+.chat-form input::placeholder{color:rgba(151,171,186,.6)}
+.chat-form .btn{height:52px;min-width:76px;padding:0 18px;font-size:15px;flex-shrink:0;white-space:nowrap}
+
+/* messages */
+.msg-row{display:flex}
+.msg-row.admin{justify-content:flex-end}
+.msg-row.user{justify-content:flex-start}
+.msg-bubble{max-width:78%;padding:10px 12px;border-radius:12px;font-size:14px;line-height:1.45;box-shadow:0 2px 6px rgba(0,0,0,.15);word-break:break-word}
+.msg-row.user .msg-bubble{background:#2563eb;color:#fff}
+.msg-row.admin .msg-bubble{background:#d1f7d6;color:#06210f}
+.msg-time{display:block;margin-top:2px;font-size:.75em;opacity:.7}
+.msg-reply{margin-top:6px;padding:8px;border-left:3px solid #333;border-radius:8px;background:#32CD32;color:#06210f}
+
+/* =========================================================
+   ANIMATION
+   ========================================================= */
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes ping{75%,100%{transform:scale(2);opacity:0}}
+@keyframes beacon{
+  0%{transform:scale(.95);opacity:.8;box-shadow:0 0 0 0 rgba(0,255,200,.7)}
+  70%{transform:scale(1);opacity:1;box-shadow:0 0 0 10px rgba(0,255,200,0)}
+  100%{transform:scale(.95);opacity:.8;box-shadow:0 0 0 0 rgba(0,255,200,0)}
+}
+.js .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);transition-delay:var(--d,0ms)}
+.js .reveal.in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .js .reveal{opacity:1;transform:none}
+}
+
+/* CHAT-BOX-PHONE-FIX */
+@media (max-width: 600px) {
+  .chat-box { left:12px !important; right:12px !important; width:auto !important; bottom:100px !important; height:70vh !important; max-height:70vh !important; }
+  .chat-form { padding:14px !important; gap:10px !important; }
+  .chat-form input { font-size:16px !important; padding:14px !important; }
+  .chat-form .btn { height:52px !important; min-width:76px !important; font-size:15px !important; }
+}
+
+
+
+</style>
+
+<style>
+@media (max-width: 600px) {
+  .btn { white-space: normal !important; height: auto !important; line-height: 1.4 !important; width: 100% !important; max-width: 100% !important; padding: 12px 14px !important; text-align: center !important; }
+}
+</style>
+</head>
+
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- Icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-layout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></symbol>
+    <symbol id="i-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></symbol>
+    <symbol id="i-coin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9 8h5a2 2 0 0 1 0 4H9m0 0h6a2 2 0 0 1 0 4H9M9 6v12"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></symbol>
+    <symbol id="i-calc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h4"/></symbol>
+    <symbol id="i-landmark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 22h18"/><path d="M6 18v-7M10 18v-7M14 18v-7M18 18v-7"/><path d="M12 2 3 7h18Z"/></symbol>
+    <symbol id="i-news" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-arrow-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+    <symbol id="i-support" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+    <symbol id="i-headphones" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="curves" viewBox="0 0 400 260" fill="none" stroke-linecap="round">
+      <defs>
+        <linearGradient id="cv-cyan" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1f93ad"/><stop offset="1" stop-color="#5a6fe6"/></linearGradient>
+        <linearGradient id="cv-purple" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5a24b4"/><stop offset="1" stop-color="#4a2ab8"/></linearGradient>
+      </defs>
+      <path d="M0 96 L108 204 C160 252 262 252 312 196 C354 150 368 70 344 -6" stroke="url(#cv-purple)" stroke-width="9"/>
+      <path d="M0 40 L108 148 C160 196 262 196 312 140 C354 94 368 20 344 -6" stroke="url(#cv-cyan)" stroke-width="9"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ═════════ HEADER ═════════ -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="#home" class="brand" aria-label="E~Dickson Technology — home">
+      <span class="logo-box">ED<img src="logo.png" alt="" onerror="this.remove()"></span>
+      <span class="brand-text">
+        <span class="brand-name text-gradient-cyan">E~Dickson Technology</span>
+        <span class="brand-tag">Creative Dev &amp; UI Studio</span>
+      </span>
+    </a>
+
+    <nav class="nav-desktop" aria-label="Primary">
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#portfolio" class="nav-link">Portfolio</a>
+      <a href="#source-code" class="nav-link">Source Code</a>
+      <a href="#testimonials" class="nav-link">Reviews</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <button type="button" class="live-btn" data-chat-toggle><span class="beacon"></span> Live Support</button>
+      <a href="https://wa.me/2349158487236" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-md">Hire Me <svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+    </div>
+
+    <button type="button" id="menuBtn" class="menu-btn" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobileMenu">
+      <svg class="icon icon-lg" aria-hidden="true"><use href="#i-menu"/></svg>
+    </button>
+  </div>
+
+  <div id="mobileMenu" class="mobile-menu">
+    <a href="#home" class="m-link">Home</a>
+    <a href="#about" class="m-link">About</a>
+    <a href="#services" class="m-link">Services</a>
+    <a href="#portfolio" class="m-link">Portfolio</a>
+    <a href="#source-code" class="m-link">Source Code</a>
+    <a href="#testimonials" class="m-link">Reviews</a>
+    <a href="#contact" class="m-link">Contact</a>
+    <a href="https://wa.me/2349158487236" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg btn-block">Hire Me on WhatsApp</a>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ═════════ VIOLET ZONE ═════════ -->
+<div class="zone-violet">
+
+  <!-- HERO -->
+  <section id="home" class="section">
+    <div class="hero-orb" aria-hidden="true"></div>
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <div class="reveal glass hero-badge">
+          <span class="beacon md"></span>
+          <span class="t">Available for new projects</span>
+        </div>
+
+        <div class="reveal headline-box" style="--d:70ms">
+          <h1>Crafting Digital Worlds with <br><span class="text-gradient">Eniola Dickson</span></h1>
+        </div>
+
+        <div class="reveal hero-typing" style="--d:130ms">
+          <span aria-hidden="true">&gt;&nbsp;</span><span id="typing" aria-live="off"></span>
+        </div>
+
+        <p class="reveal hero-desc" style="--d:190ms">I design and build modern, responsive web applications with clean interfaces, real-time functionality, and smooth user experiences tailored for both personal and business needs.</p>
+
+        <div class="reveal hero-btns" style="--d:250ms">
+          <a href="https://wa.me/2349158487236" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">Hire Me on WhatsApp <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+          <a href="#portfolio" class="btn btn-outline btn-lg">Explore Projects <svg class="icon icon-sm" style="color:var(--primary)" aria-hidden="true"><use href="#i-arrow-down"/></svg></a>
+          <button type="button" class="glass btn-ghost" data-chat-toggle><svg class="icon icon-sm" aria-hidden="true"><use href="#i-headphones"/></svg> Live Chat</button>
+        </div>
+
+        <!-- Edit these numbers to match your real track record -->
+        <dl class="reveal hero-stats" style="--d:310ms">
+          <div><dt>Shipped Projects</dt><dd>15+</dd></div>
+          <div><dt>Happy Clients</dt><dd>10+</dd></div>
+          <div><dt>Mobile Responsive</dt><dd>100%</dd></div>
+          <div><dt>Real-Time Chat</dt><dd>Live</dd></div>
+        </dl>
+      </div>
+
+      <div class="reveal hero-visual" style="--d:200ms">
+        <div class="frame">
+          <div class="frame-inner">
+            <div class="frame-top">
+              <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
+              <span class="status">SYSTEM: ONLINE</span>
+            </div>
+
+            <div class="frame-mid">
+              <div class="orbit" aria-hidden="true">
+                <div class="ring ring-1"></div>
+                <div class="ring ring-2"></div>
+                <div class="ring ring-3"></div>
+                <div class="orbit-core">
+                  <span class="ed">ED</span>
+                  <img src="image.png" alt="" onerror="this.remove()">
+                  <div class="cap">Creative Dev</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="reveal about-head">
+        <span class="eyebrow">Architect &amp; Visionary</span>
+        <h2 class="section-title">About Me</h2>
+        <p class="section-sub">My Name Is Kayode Sodiq Eniola I'm a Full-Stack web-developer Ui&Ux Designer Mobile App Developer And Software Engineer Engineering seamless bridges between high-performance backends and breathtaking user interfaces.</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="reveal about-profile">
+          <div class="float-tag tl"><i></i> Open to Work</div>
+
+          <div class="glass profile-card">
+            <div class="bar bar-gradient"></div>
+            <div class="avatar">
+              <div class="avatar-ring bar-gradient">
+                <div class="avatar-in">ED<img src="logo.png" alt="Eniola Dickson - E~Dickson" onerror="this.remove()"></div>
+              </div>
+              <div class="avatar-live"><span class="beacon lg" style="display:block"></span></div>
+            </div>
+            <h3>Eniola Dickson</h3>
+            <p class="role">Web Developer &amp; UI Designer • Lagos, Nigeria</p>
+            <div class="chips">
+              <span class="chip chip-cyan">Full-Stack Web Dev</span>
+              <span class="chip chip-blue">Real-Time Apps</span>
+              <span class="chip chip-purple">Modern UI Design</span>
+              <span class="chip chip-cyan">Mobile-First Design</span>
+              <span class="chip chip-green">Python Guru</span>
+              <span class="chip chip-blue">Performance Optimization</span>
+              <span class="chip chip-purple">Problem Solving</span>
+            </div>
+          </div>
+
+          <div class="float-tag br"><i></i> Lagos, Nigeria 📍</div>
+        </div>
+
+        <div class="about-text">
+          <div class="reveal glass spot about-item i1">
+            <h4>01. Who I Am</h4>
+            <p>I’m a passionate programmer based in Lagos, building responsive digital products that combine reliable engineering with a polished, modern finish.</p>
+          </div>
+          <div class="reveal glass spot about-item i2" style="--d:70ms">
+            <h4>02. What I Do</h4>
+            <p>I build web solutions across multiple sectors: crypto &amp; fintech dashboards, conversion-focused e-commerce platforms, business websites, and real-time applications.</p>
+          </div>
+          <div class="reveal glass spot about-item i3" style="--d:140ms">
+            <h4>03. My Approach</h4>
+            <p>I focus on performance, aesthetics, and usability — every interface is built mobile-first with clean, semantic code and custom-tailored design that scales with your business.</p>
+          </div>
+
+          <div class="reveal about-cta" style="--d:200ms">
+            <a href="https://wa.me/2349158487236" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-md">Let’s Work Together <svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+            <a href="mailto:enioladickson63@gmail.com" class="btn btn-outline btn-md">Send Direct Email</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═════════ NAVY ZONE ═════════ -->
+<div class="zone-navy">
+  <svg class="curves curves-tl" aria-hidden="true"><use href="#curves"/></svg>
+  <div class="ghost-ring" aria-hidden="true"></div>
+
+  <!-- SERVICES -->
+  <section id="services" class="section">
+    <div class="container">
+      <div class="reveal split-head">
+        <div><span class="eyebrow">Specialized Capabilities</span><h2 class="section-title">Services Built to Scale</h2></div>
+        <p class="section-sub">From concept wireframes to full-stack deployment, every project receives meticulous attention to detail.</p>
+      </div>
+
+      <div class="grid-3">
+        <article class="reveal glass spot card-lift service t-cyan">
+          <span class="icon-chip tone-cyan"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-layout"/></svg></span>
+          <h3>Portfolio Websites</h3>
+          <p>Showcase your creative work, achievements, and capabilities with a cinematic layout built to attract clients and employers.</p>
+        </article>
+        <article class="reveal glass spot card-lift service t-blue" style="--d:70ms">
+          <span class="icon-chip tone-blue"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-briefcase"/></svg></span>
+          <h3>Corporate &amp; Business Sites</h3>
+          <p>Tailored digital headquarters for startups and companies seeking authoritative brand presence and steady client acquisition.</p>
+        </article>
+        <article class="reveal glass spot card-lift service t-purple" style="--d:140ms">
+          <span class="icon-chip tone-purple"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-cart"/></svg></span>
+          <h3>E-Commerce Platforms</h3>
+          <p>High-converting storefronts with smooth checkout, secure payment gateways, cart automation, and inventory management.</p>
+        </article>
+        <article class="reveal glass spot card-lift service t-cyan">
+          <span class="icon-chip tone-cyan"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-coin"/></svg></span>
+          <h3>Crypto &amp; Fintech Portals</h3>
+          <p>Sleek blockchain-themed UI with real-time token trackers, interactive charts, tokenomics roadmaps, and wallet integrations.</p>
+        </article>
+        <article class="reveal glass spot card-lift service t-green" style="--d:70ms">
+          <span class="icon-chip tone-green"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-home"/></svg></span>
+          <h3>Real Estate &amp; Property Portals</h3>
+          <p>Property galleries with location search, price filtering, inspection booking, and agent directories.</p>
+        </article>
+        <article class="reveal glass spot card-lift service t-indigo" style="--d:140ms">
+          <span class="icon-chip tone-indigo"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-bolt"/></svg></span>
+          <h3>Real-Time Web Apps</h3>
+          <p>Dynamic WebSocket applications: live chat, multi-user tools, instant notifications, and calculation utilities.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="section">
+    <div class="container">
+      <div class="reveal split-head" style="margin-bottom:48px">
+        <div><span class="eyebrow">Curated Portfolio</span><h2 class="section-title">Featured Case Studies</h2></div>
+        <p class="section-sub">A showcase of websites and applications spanning modern web apps, e-commerce stores, and fintech platforms.</p>
+      </div>
+
+      <div class="reveal filters" id="filters" role="group" aria-label="Filter projects">
+        <button type="button" class="filter-btn" data-category="all" aria-pressed="true">All Projects</button>
+        <button type="button" class="filter-btn" data-category="business" aria-pressed="false">Business</button>
+        <button type="button" class="filter-btn" data-category="ecommerce" aria-pressed="false">E-Commerce</button>
+        <button type="button" class="filter-btn" data-category="crypto" aria-pressed="false">Crypto Web</button>
+        <button type="button" class="filter-btn" data-category="application" aria-pressed="false">Applications</button>
+        <button type="button" class="filter-btn" data-category="portfolio" aria-pressed="false">Portfolio</button>
+        <button type="button" class="filter-btn" data-category="blog" aria-pressed="false">Blog</button>
+      </div>
+
+      <!-- Images load from your project folder (business.png, e-commerce.png, ...). If one is missing, an icon placeholder shows instead. -->
+      <div class="grid-3" id="portfolioContainer">
+
+        <a href="#contact" data-cat="crypto" class="project reveal glass card-lift t-cyan">
+          <div class="thumb"><span class="fb"><svg aria-hidden="true"><use href="#i-coin"/></svg></span><img src="crypto.png" alt="E~Dickson Crypto-Buzz platform preview" loading="lazy" onerror="this.remove()"><span class="badge b-cyan">Crypto Web</span></div>
+          <div class="project-body">
+            <h3>E~Dickson Crypto-Buzz Platform</h3>
+            <p>Sleek blockchain-focused interface with live price ticker, market tracking, and an interactive ecosystem roadmap.</p>
+            <div class="project-link"><span>Start a similar project</span><span>→</span></div>
+          </div>
+        </a>
+
+        <a href="#contact" data-cat="business" class="project reveal glass card-lift t-blue" style="--d:70ms">
+          <div class="thumb"><span class="fb"><svg aria-hidden="true"><use href="#i-briefcase"/></svg></span><img src="business.png" alt="TechCorp business site preview" loading="lazy" onerror="this.remove()"><span class="badge b-blue">Business</span></div>
+          <div class="project-body">
+            <h3>TechCorp Business Infrastructure</h3>
+            <p>High-converting corporate website with lead capture and service booking.</p>
+            <div class="project-link"><span>Start a similar project</span><span>→</span></div>
+          </div>
+        </a>
+
+        <a href="#contact" data-cat="ecommerce" class="project reveal glass card-lift t-purple" style="--d:140ms">
+          <div class="thumb"><span class="fb"><svg aria-hidden="true"><use href="#i-cart"/></svg></span><img src="e-commerce.png" alt="ShopEasy storefront preview" loading="lazy" onerror="this.remove()"><span class="badge b-purple">E-Commerce</span></div>
+          <div class="project-body">
+            <h3>ShopEasy Global Storefront</h3>
+            <p>Complete commerce hub with card checkout, order tracking, and category filtering.</p>
+            <div class="project-link"><span>Start a similar project</span><span>→</span></div>
+          </div>
+        </a>
+
+        <a href="#contact" data-cat="application" class="project reveal glass card-lift t-green">
+          <div class="thumb"><span class="fb"><svg aria-hidden="true"><use href="#i-calc"/></svg></span><img src="calculator.png" alt="E~Dickson Scientific Calculator preview" loading="lazy" onerror="this.remove()"><span class="badge b-green">Application</span></div>
+          <div class="project-body">
+            <h3>E~dickson Scientific Ai Calculator</h3>
+            <p>Computational utility supporting complex formula evaluation and history persistence.</p>
+            <div class="project-link"><span>Start a similar project</span><span>→</span></div>
+          </div>
+        </a>
+
+        <a href="#contact" data-cat="business" class="project reveal glass card-lift t-cyan" style="--d:70ms">
+          <div class="thumb"><span class="fb"><svg aria-hidden="true"><use href="#i-home"/></svg></span><img src="real-estate.png" alt="Prime Realty Nigeria preview" loading="lazy" onerror="this.remove()"><span class="badge b-cyan">Real Estate</span></div>
+          <div class="project-body">
+            <h3>Prime Realty Nigeria Portal</h3>
+            <p>Residential and commercial property marketplace with neighbourhood maps and filters.</p>
+            <div class="project-link"><span>Start a similar project</span><span>→</span></div>
+          </div>
+        </a>
+
+        <a href="#contact" data-cat="business" class="project reveal glass card-lift t-purple" style="--d:140ms">
+          <div class="thumb"><span class="fb"><svg aria-hidden="true"><use href="#i-landmark"/></svg></span><img src="organization.png" alt="St. David's Church website preview" loading="lazy" onerror="this.remove()"><span class="badge b-purple">Organization</span></div>
+          <div class="project-body">
+            <h3>St. David’s Church &amp; NGO</h3>
+            <p>Community platform for sermons, event coordination, and secure charity giving.</p>
+            <div class="project-link"><span>Start a similar project</span><span>→</span></div>
+          </div>
+        </a>
+
+        <a href="#contact" data-cat="portfolio" class="project reveal glass card-lift t-blue">
+          <div class="thumb"><span class="fb"><svg aria-hidden="true"><use href="#i-layout"/></svg></span><img src="portfolio.png" alt="Creative portfolio preview" loading="lazy" onerror="this.remove()"><span class="badge b-blue">Portfolio</span></div>
+          <div class="project-body">
+            <h3>Creative Portfolio</h3>
+            <p>Personal brand site with gallery, case studies, and a direct-booking contact flow.</p>
+            <div class="project-link"><span>Start a similar project</span><span>→</span></div>
+          </div>
+        </a>
+
+        <a href="#contact" data-cat="blog" class="project reveal glass card-lift t-green" style="--d:70ms">
+          <div class="thumb"><span class="fb"><svg aria-hidden="true"><use href="#i-news"/></svg></span><img src="blog.png" alt="Daily News Platform preview" loading="lazy" onerror="this.remove()"><span class="badge b-green">Blog</span></div>
+          <div class="project-body">
+            <h3>Daily News Platform</h3>
+            <p>Fast publishing layout for articles, breaking news, and trending stories.</p>
+            <div class="project-link"><span>Start a similar project</span><span>→</span></div>
+          </div>
+        </a>
+      </div>
+      <p class="no-results" id="noResults">No projects in this category yet.</p>
+    </div>
+  </section>
+
+  
+  <!-- AI AGENT / SOURCE CODE -->
+  <section id="source-code" class="section">
+    <div class="container">
+      <div class="reveal split-head" style="margin-bottom:32px">
+        <div><span class="eyebrow">AI Agent I&apos;ve Built</span><h2 class="section-title">E~Dickson ClassWizz</h2></div>
+        <p class="section-sub">The future of offline AI.</p>
+      </div>
+
+      <div class="reveal glass card-lift" style="padding:32px;border-radius:16px">
+        <h3 style="font-family:var(--serif);font-size:22px;color:#fff">E~Dickson ClassWizz is a Scientific AI Calculator</h3>
+        <p style="margin-top:12px;font-size:15px;line-height:1.7;color:var(--muted)">It&apos;s the future of offline AI — without internet you can use it comfortably. I must say I might not be the first to build an offline AI agent, but I&apos;m very proud and confident with what I built.</p>
+        <p style="margin-top:12px;font-size:15px;line-height:1.7;color:var(--muted)">And if you&apos;re also interested in building an offline AI agent like this, then I have a source code for you — it&apos;s just <b style="color:#fff">5,000 Naira only</b>. Check for the source code below and click the link if you are interested.</p>
+
+        <div style="margin-top:24px;padding:20px;border:1px solid var(--line);border-radius:12px;background:rgba(0,255,200,.05)">
+          <h4 style="font-family:var(--serif);font-size:19px;color:#fff">E~Dickson Offline AI Agent Source Code — 5,000 Naira</h4>
+          <p style="margin-top:8px;font-size:13px;color:var(--muted)">Get the full source code and build your own offline AI agent.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:16px">
+            <a href="https://wa.me/2349158487236?text=Hi%20E~Dickson%2C%20I%20want%20the%20Source%20Code%205k%20-%20E~Dickson%20Offline%20AI%20Agent%20Source%20Code" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-md">Get The Source Code For An Offline AI Agent — 5k →</a>
+            <a href="classwizz.apk" download class="btn btn-outline btn-md" style="white-space:normal !important; text-align:center; width:100%;">Download ClassWizz App (Free)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- TESTIMONIALS -->
+  <!-- NOTE: placeholder testimonials. Replace with real client feedback before launch. -->
+  <section id="testimonials" class="section">
+    <div class="container">
+      <div class="reveal about-head">
+        <span class="eyebrow">Client Endorsements</span>
+        <h2 class="section-title">Trusted by Founders &amp; Creators</h2>
+        <p class="section-sub">Experiences from clients who partnered with E~Dickson to elevate their digital brand.</p>
+      </div>
+
+      <div class="grid-3">
+        <figure class="reveal glass spot card-lift testi">
+          <div>
+            <div class="stars" role="img" aria-label="5 out of 5 stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+            <blockquote>“Eniola built my business website in just a few days and it looked better than I imagined. Very professional, responsive, and patient with revisions. Highly recommended!”</blockquote>
+          </div>
+          <figcaption>
+            <span class="avatar-sm" style="background:linear-gradient(45deg,var(--primary),var(--secondary))">DO</span>
+            <div><div class="nm">David O.</div><div class="rl">CEO, SwiftLogistics NG</div></div>
+          </figcaption>
+        </figure>
+
+        <figure class="reveal glass spot card-lift testi" style="--d:80ms">
+          <div>
+            <div class="stars" role="img" aria-label="5 out of 5 stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+            <blockquote>“The custom creative portfolio designed for me got me hired within a week! Super clean, fast, and mobile-friendly — a true understanding of modern aesthetics.”</blockquote>
+          </div>
+          <figcaption>
+            <span class="avatar-sm" style="background:linear-gradient(45deg,var(--accent),var(--primary))">AK</span>
+            <div><div class="nm">Amara K.</div><div class="rl">Lead Graphic &amp; Motion Designer</div></div>
+          </figcaption>
+        </figure>
+
+        <figure class="reveal glass spot card-lift testi" style="--d:160ms">
+          <div>
+            <div class="stars" role="img" aria-label="5 out of 5 stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+            <blockquote>“Amazing work! Our online store runs smoothly and customers constantly praise the UI. Eniola was communicative and delivered on time.”</blockquote>
+          </div>
+          <figcaption>
+            <span class="avatar-sm" style="background:linear-gradient(45deg,var(--secondary),var(--accent))">FB</span>
+            <div><div class="nm">Fatima B.</div><div class="rl">Founder, GlowBeauty Store</div></div>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="contact-grid">
+
+        <div class="reveal contact-info">
+          <div>
+            <span class="eyebrow">Initiate Project</span>
+            <h2 class="section-title sm">Let’s Build Something Exceptional</h2>
+            <p class="lead">Have a web project in mind or want to modernize your existing site? Reach out directly or send a message through the form.</p>
+          </div>
+
+          <div class="contact-list">
+            <a href="mailto:enioladickson63@gmail.com" class="glass contact-row">
+              <span class="icon-chip sm tone-cyan"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></span>
+              <span><span class="lbl">Direct Email</span><span class="val">enioladickson63@gmail.com</span></span>
+            </a>
+            <a href="https://wa.me/2349158487236" target="_blank" rel="noopener noreferrer" class="glass contact-row">
+              <span class="icon-chip sm tone-green"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
+              <span><span class="lbl">WhatsApp / Phone</span><span class="val">+234 915 848 7236</span></span>
+            </a>
+            <div class="glass contact-row">
+              <span class="icon-chip sm tone-purple"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg></span>
+              <span><span class="lbl">Base Studio</span><span class="val">Lagos, Nigeria</span></span>
+            </div>
+          </div>
+
+          <div class="map">
+            <iframe title="Map showing Lagos, Nigeria" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253682.45932537555!2d3.1191035!3d6.5480357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b2ae68280c1%3A0xdc9e87a367c3d9cb!2sLagos%2C%20Nigeria!5e0!3m2!1sen!2s!4v1680000000000!5m2!1sen!2s"></iframe>
+          </div>
+        </div>
+
+        <div class="reveal contact-form" style="--d:80ms">
+          <div class="glass form-card">
+            <div class="bar bar-gradient"></div>
+            <h3>Send an Instant Project Brief</h3>
+            <p class="hint">Goes straight to the developer workspace and live admin portal.</p>
+
+            <form id="contactForm" novalidate>
+              <div class="row-2">
+                <div><label class="label" for="name">Your Full Name</label><input class="field" type="text" id="name" name="name" required placeholder="Alexander Vance" autocomplete="name"></div>
+                <div><label class="label" for="email">Email Address</label><input class="field" type="email" id="email" name="email" required placeholder="alexander@company.com" autocomplete="email"></div>
+              </div>
+              <div><label class="label" for="phone">Phone or WhatsApp</label><input class="field" type="tel" id="phone" name="phone" placeholder="+234…" autocomplete="tel"></div>
+              <div><label class="label" for="message">Project Requirements &amp; Scope</label><textarea class="field" id="message" name="message" rows="4" required placeholder="Describe your goals, timeline, and budget…"></textarea></div>
+
+              <button type="submit" class="btn btn-primary btn-lg btn-block">Send Message <svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+              <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+              <div id="messages" class="msg-list" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <svg class="curves curves-br" aria-hidden="true"><use href="#curves"/></svg>
+</div>
+
+</main>
+
+<!-- ═════════ FOOTER ═════════ -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <span class="logo-box">ED<img src="logo.png" alt="" onerror="this.remove()"></span>
+      <div><span class="brand-name text-gradient-cyan" style="display:block">E~Dickson Technology</span><p>Modern UI Design &amp; Real-Time Engineering</p></div>
+    </div>
+
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#portfolio">Portfolio</a> <a href="#source-code">Source Code</a><a href="#testimonials">Reviews</a><a href="#contact">Contact</a>
+    </nav>
+
+    <div class="footer-meta">
+      <p>Contact 📧 Email: <a href="mailto:enioladickson63@gmail.com">enioladickson63@gmail.com</a></p>
+      <p>© <span id="year">2026</span> This Website was Designed &amp; Developed by 🥀Eniola~Dickson✨.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ═════════ FLOATING: WhatsApp + Live Support ═════════ -->
+<a href="https://wa.me/2349158487236" target="_blank" rel="noopener noreferrer" title="Chat on WhatsApp" aria-label="Chat on WhatsApp" class="fab fab-wa"><svg aria-hidden="true"><use href="#i-chat"/></svg></a>
+<button type="button" data-chat-toggle title="Open Live Support" aria-label="Open live support chat" aria-controls="chatBox" aria-expanded="false" id="chatFab" class="fab fab-chat"><svg aria-hidden="true"><use href="#i-support"/></svg></button>
+
+<div id="chatBox" class="chat-box" role="dialog" aria-label="Live support chat">
+  <div class="chat-head">
+    <div class="l"><span class="pulse"></span><span>E~Dickson Support &amp; Admin</span></div>
+    <button type="button" data-chat-toggle aria-label="Close chat"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+  </div>
+  <div id="chatMessages" class="chat-messages" aria-live="polite"></div>
+  <div id="typingIndicator" class="chat-typing">Admin is typing…</div>
+  <form id="chatForm" class="chat-form" autocomplete="off">
+    <input id="chatInput" placeholder="Write a message to Eniola…" aria-label="Chat message" maxlength="500">
+    <button type="submit" class="btn btn-primary">Send</button>
+  </form>
+</div>
+
+<!-- Socket.IO client: served by your Node server. On static hosting it simply won't load and the site falls back to WhatsApp. -->
+<script src="/socket.io/socket.io.js" onerror="void 0"></script>
+
+<script>
+(function () {
+  'use strict';
+
+  var doc = document;
+  var $ = function (s, r) { return (r || doc).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || doc).querySelectorAll(s)); };
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var WA_NUMBER = '2349158487236';
+
+  /* ---------- year ---------- */
+  var yr = $('#year'); if (yr) yr.textContent = new Date().getFullYear();
+
+  /* ---------- typing effect (emoji-safe) ---------- */
+  (function () {
+    var el = $('#typing'); if (!el) return;
+    var phrases = ['Web Developer 💻', 'UI/UX Designer 🎨', 'Modern UI Specialist ✨', 'Frontend Engineer ⚡'].map(function (p) { return Array.from(p); });
+    if (reduceMotion) { el.textContent = phrases[0].join(''); return; }
+    var i = 0, c = 0, del = false;
+    function tick() {
+      var cur = phrases[i];
+      if (!del) {
+        c++; el.textContent = cur.slice(0, c).join('');
+        if (c >= cur.length) { del = true; return setTimeout(tick, 1500); }
+        return setTimeout(tick, 100);
+      }
+      c--; el.textContent = cur.slice(0, c).join('');
+      if (c <= 0) { del = false; i = (i + 1) % phrases.length; return setTimeout(tick, 350); }
+      setTimeout(tick, 55);
+    }
+    tick();
+  })();
+
+  /* ---------- mobile menu ---------- */
+  var menu = $('#mobileMenu'), menuBtn = $('#menuBtn');
+  function setMenu(open) {
+    menu.classList.toggle('open', open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+  }
+  menuBtn.addEventListener('click', function () { setMenu(!menu.classList.contains('open')); });
+  $$('#mobileMenu a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+  window.addEventListener('resize', function () { if (window.innerWidth >= 768) setMenu(false); });
+
+  /* ---------- portfolio filters ---------- */
+  var fBtns = $$('#filters .filter-btn');
+  var items = $$('#portfolioContainer .project');
+  var allBtn = $('#filters [data-category="all"]');
+  if (allBtn) allBtn.textContent = 'All Projects (' + items.length + ')';
+  fBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var f = btn.getAttribute('data-category'), shown = 0;
+      fBtns.forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
+      items.forEach(function (it) {
+        var show = f === 'all' || it.getAttribute('data-cat') === f;
+        it.hidden = !show;
+        if (show) { it.classList.add('in'); shown++; }
+      });
+      $('#noResults').style.display = shown ? 'none' : 'block';
+    });
+  });
+
+  /* ---------- scroll reveal ---------- */
+  var reveals = $$('.reveal');
+  if ('IntersectionObserver' in window && !reduceMotion) {
+    var ioReveal = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); ioReveal.unobserve(e.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(function (el) { ioReveal.observe(el); });
+  } else {
+    reveals.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  /* ---------- cursor spotlight ---------- */
+  $$('.spot').forEach(function (el) {
+    el.addEventListener('pointermove', function (e) {
+      var r = el.getBoundingClientRect();
+      el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      el.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+
+  /* ---------- active nav link ---------- */
+  var links = $$('.nav-link'), linkMap = {};
+  links.forEach(function (l) { linkMap[l.getAttribute('href').slice(1)] = l; });
+  if ('IntersectionObserver' in window) {
+    var ioNav = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting && linkMap[e.target.id]) {
+          links.forEach(function (l) { l.classList.remove('active'); });
+          linkMap[e.target.id].classList.add('active');
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    Object.keys(linkMap).forEach(function (id) { var s = doc.getElementById(id); if (s) ioNav.observe(s); });
+  }
+
+  /* ---------- chat toggle ---------- */
+  var chatBox = $('#chatBox'), chatFab = $('#chatFab'), chatInput = $('#chatInput');
+  function toggleChat() {
+    var open = chatBox.classList.toggle('open');
+    chatFab.setAttribute('aria-expanded', String(open));
+    if (open) { setTimeout(function () { chatInput.focus(); }, 50); scrollChat(); }
+  }
+  $$('[data-chat-toggle]').forEach(function (b) { b.addEventListener('click', toggleChat); });
+  doc.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && chatBox.classList.contains('open')) toggleChat();
+  });
+  function scrollChat() { var c = $('#chatMessages'); c.scrollTop = c.scrollHeight; }
+
+  /* ---------- Socket.IO (guarded) ---------- */
+  var socket = null;
+  try { if (typeof io === 'function') socket = io(); socket.on('connect', function(){ socket.emit('join', myGuestId); }); } catch (err) { socket = null; }
+
+  function waLink(text) { return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(text); }
+
+  /* contact form */
+  var form = $('#contactForm'), status = $('#formStatus');
+  function setStatus(msg, isErr) { status.textContent = msg; status.classList.toggle('err', !!isErr); }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = $('#name').value.trim();
+    var email = $('#email').value.trim();
+    var phone = $('#phone').value.trim();
+    var message = $('#message').value.trim();
+    if (!name || !email || !message) { setStatus('Please fill in your name, email and message.', true); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setStatus('Please enter a valid email address.', true); return; }
+
+    if (socket) {
+      socket.emit('userMessage', { guestId: myGuestId, name: name, email: email, phone: phone, message: message });
+      $('#message').value = '';
+      setStatus('Message sent — I’ll reply shortly.');
+    } else {
+      var text = 'Hi Eniola, I\'m ' + name + ' (' + email + (phone ? ', ' + phone : '') + '). ' + message;
+      window.open(waLink(text), '_blank', 'noopener');
+      setStatus('Opening WhatsApp to send your message…');
+    }
+  });
+
+  /* floating chat */
+  $('#chatForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var text = chatInput.value.trim();
+    if (!text) return;
+    if (socket) {
+      socket.emit('userMessage', { guestId: myGuestId, name: 'Guest', message: text });
+    } else {
+      window.open(waLink(text), '_blank', 'noopener');
+    }
+    chatInput.value = '';
+  });
+
+  /* render messages (all user text is set via textContent — no HTML injection) */
+  function buildMessage(m) {
+    var isAdmin = String(m.name || '').toLowerCase() === 'admin';
+    var row = doc.createElement('div');
+    row.className = 'msg-row ' + (isAdmin ? 'admin' : 'user');
+
+    var bubble = doc.createElement('div');
+    bubble.className = 'msg-bubble';
+
+    var who = doc.createElement('b');
+    who.textContent = (isAdmin ? '👩‍💻 ' : '🙎 ') + (m.name || 'Guest');
+    bubble.appendChild(who);
+    bubble.appendChild(doc.createElement('br'));
+    bubble.appendChild(doc.createTextNode(m.message || ''));
+
+    var d = new Date(m.id);
+    if (!isNaN(d.getTime())) {
+      var t = doc.createElement('span');
+      t.className = 'msg-time';
+      t.textContent = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      bubble.appendChild(t);
+    }
+
+    if (m.reply) {
+      var r = doc.createElement('div');
+      r.className = 'msg-reply';
+      var rb = doc.createElement('b');
+      rb.textContent = '👩‍💻 Admin Reply:';
+      r.appendChild(rb);
+      r.appendChild(doc.createElement('br'));
+      r.appendChild(doc.createTextNode(m.reply));
+      bubble.appendChild(r);
+    }
+    row.appendChild(bubble);
+    return row;
+  }
+
+  if (socket) {
+    socket.on('messageUpdate', function (messages) {
+      var a = $('#messages'), b = $('#chatMessages');
+      a.textContent = ''; b.textContent = '';
+      (messages || []).forEach(function (m) {
+        a.appendChild(buildMessage(m));
+        b.appendChild(buildMessage(m));
+      });
+      scrollChat();
+      a.scrollTop = a.scrollHeight;
+    });
+
+    var typingTimer;
+    socket.on('adminTyping', function () {
+      var el = $('#typingIndicator');
+      el.style.display = 'block';
+      clearTimeout(typingTimer);
+      typingTimer = setTimeout(function () { el.style.display = 'none'; }, 2500);
+    });
+  }
+})();
+</script>
+
+<!-- ClassWizz Download Popup -->
+<div id="classwizzModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:9999;align-items:center;justify-content:center;padding:20px;">
+  <div style="background:white;color:#111;max-width:420px;width:100%;border-radius:16px;padding:22px;text-align:left;">
+    <h3 style="margin:0 0 10px;">Install ClassWizz</h3>
+    <p style="margin:0 0 12px;font-size:14px;">Don't worry, it's safe. Follow these steps:</p>
+    <p style="font-size:14px;line-height:1.6;margin:0 0 16px;">
+    1. Tap <b>Download</b> below<br>
+    2. When it asks, tap <b>Allow install from unknown sources</b><br>
+    3. Tap <b>Install anyway</b><br>
+    4. <b>Please Note:</b> This is an APK file for Android devices only. It is not an IPA file, so it will not work on iPhone (iOS). Don't worry — we are currently working on the IPA version for iOS and it will be available soon.<br>
+    5. Open ClassWizz and enjoy!
+    </p>
+    <button onclick="startClassWizzDownload()" style="width:100%;padding:12px;border:none;border-radius:10px;background:#111;color:white;font-weight:700;cursor:pointer;">I Understand, Download Now</button>
+    <button onclick="closeClassWizzModal()" style="width:100%;padding:10px;border:none;background:none;cursor:pointer;margin-top:6px;">Cancel</button>
+  </div>
+</div>
+<script>
+function openClassWizzModal(e){ if(e) e.preventDefault(); document.getElementById('classwizzModal').style.display='flex'; }
+function closeClassWizzModal(){ document.getElementById('classwizzModal').style.display='none'; }
+function startClassWizzDownload(){ closeClassWizzModal(); window.location.href='classwizz.apk'; }
+document.addEventListener('click', function(e){ var b=e.target.closest('a[href*="classwizz"]'); if(b && !b.hasAttribute('data-real-download')){ e.preventDefault(); openClassWizzModal(); } });
+</script>
+
+
+<style>
+/* CHAT-BAR-FIX-V2 */
+.chat-input-area, .chat-input-container, .chat-form { display:flex !important; gap:8px !important; padding:10px !important; align-items:center !important; }
+.chat-input-area input, .chat-input-container input, .chat-form input { flex:1 !important; min-width:0 !important; width:auto !important; padding:12px 14px !important; border-radius:20px !important; }
+.chat-input-area button, .chat-input-container button, .chat-form button { flex-shrink:0 !important; width:70px !important; min-width:70px !important; padding:12px 8px !important; }
+</style>
+
+
+
+
+<style id="chat-restore-original">
+#chatForm.chat-form{display:flex!important;flex-direction:row!important;gap:10px!important;align-items:center!important;width:100%!important}
+#chatForm #chatInput{flex:1!important;min-width:0!important;width:auto!important}
+#chatForm .btn{flex:none!important;width:auto!important;min-width:0!important;white-space:nowrap!important;padding:10px 18px!important}
+</style>
+
+<script>let myGuestId=localStorage.getItem('myGuestId'); if(!myGuestId){myGuestId='guest_'+Date.now(); localStorage.setItem('myGuestId',myGuestId);}</script></body>
+</html>
+<style>
+/* --- FIX: Chat bar on phone --- */
+.chat-input-area, .chat-input-container, .chat-form {
+}
+.chat-input-area input, .chat-input-container input, .chat-form input, #chat-input, #message-input {
+}
+.chat-input-area button, .chat-input-container button, .chat-form button, #send-btn, #chat-send {
+}
+@media (max-width: 600px) {
+  .chat-input-area button, .chat-input-container button, .chat-form button {
+  }
+}
+</style>
+<style>
+/* FIX CHAT BAR PHONE */
+.chat-input-area, .chat-input-container, .chat-form {
+  display: flex;
+  gap: 8px;
+  padding: 10px;
+  align-items: center;
+}
+.chat-input-area input, .chat-input-container input, .chat-form input {
+  flex: 1;
+  min-width: 0;
+  width: auto;
+  padding: 12px 14px;
+  border-radius: 20px;
+}
+.chat-input-area button, .chat-input-container button, .chat-form button {
+  flex-shrink: 0;
+  width: 70px;
+  min-width: 70px;
+  padding: 12px 8px;
+  white-space: nowrap;
+}
+</style>

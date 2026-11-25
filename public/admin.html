@@ -146,6 +146,11 @@ socket.on("messageUpdate", (messages) => {
 
     box.appendChild(textarea);
     box.appendChild(button);
+    const delBtn = document.createElement("button");
+    delBtn.innerText = "🗑 Delete";
+    delBtn.style = "background:red;color:white;margin-left:8px;padding:8px 12px;border:none;border-radius:8px;cursor:pointer;";
+    delBtn.onclick = () => { if(confirm("Delete this message?")) socket.emit("adminDelete", m.id); };
+    box.appendChild(delBtn);
     panel.appendChild(box);
   });
 });

@@ -157,6 +157,12 @@ io.on("connection", (socket) => {
     }
   });
 
+  socket.on("adminDelete", (id) => {
+    if(!socket.isAdmin) return;
+    messages = messages.filter(m => m.id !== id);
+    saveMessages();
+    for(let s of io.sockets.sockets.values()){ if(s.isAdmin) s.emit("messageUpdate", messages); else if(s.guestId) s.emit("messageUpdate", messages.filter(m=>(m.guestId||"old")===s.guestId)); }
+  });
   socket.on("disconnect", () => {
     console.log("⚡ Client disconnected");
   });
