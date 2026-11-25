@@ -99,6 +99,7 @@ fetch("/admin", { method: "GET" })
 
 <script>
 const socket = io();
+socket.emit('adminJoin');
 
 socket.on("messageUpdate", (messages) => {
   const panel = document.getElementById("panel");

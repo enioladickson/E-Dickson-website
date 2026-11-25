@@ -1235,7 +1235,7 @@ document.addEventListener('click', function(e){ var b=e.target.closest('a[href*=
 #chatForm .btn{flex:none!important;width:auto!important;min-width:0!important;white-space:nowrap!important;padding:10px 18px!important}
 </style>
 
-</body>
+<script>let myGuestId=localStorage.getItem('myGuestId'); if(!myGuestId){myGuestId='guest_'+Date.now(); localStorage.setItem('myGuestId',myGuestId);}</script></body>
 </html>
 <style>
 /* --- FIX: Chat bar on phone --- */

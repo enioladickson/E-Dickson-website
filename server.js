@@ -67,7 +67,7 @@ app.post("/login", (req, res) => {
 app.post("/clear-messages", (req, res) => {
   messages = [];
   saveMessages();
-  io.emit("messageUpdate", messages);
+  for(let s of io.sockets.sockets.values()){ if(s.isAdmin) s.emit("messageUpdate", messages); else if(s.guestId) s.emit("messageUpdate", messages.filter(m=>(m.guestId||"old")===s.guestId)); }
   res.json({ success: true });
 });
 app.get("/logout", (req, res) => {
@@ -111,13 +111,16 @@ function saveMessages() {
 
 io.on("connection", (socket) => {
   console.log("⚡ New client connected");
+  socket.on("join", (gid) => { socket.guestId=gid; socket.emit("messageUpdate", messages.filter(m=>(m.guestId||"old")===gid)); });
+  socket.on("adminJoin", () => { socket.isAdmin=true; socket.emit("messageUpdate", messages); });
 
-  socket.emit("messageUpdate", messages);
+  // wait for join / adminJoin
 
   // USER MESSAGE
   socket.on("userMessage", async (msg) => {
     const newMsg = {
       id: Date.now(),
+      guestId: msg.guestId || 'old',
       name: msg.name,
       email: msg.email || "",
       phone: msg.phone || "",
@@ -127,7 +130,7 @@ io.on("connection", (socket) => {
 
     messages.push(newMsg);
     saveMessages();
-    io.emit("messageUpdate", messages);
+    for(let s of io.sockets.sockets.values()){ if(s.isAdmin) s.emit("messageUpdate", messages); else if(s.guestId) s.emit("messageUpdate", messages.filter(m=>(m.guestId||"old")===s.guestId)); }
 
     // EMAIL NOTIFICATION VIA RESEND
     try {
@@ -150,7 +153,7 @@ io.on("connection", (socket) => {
     if (msg) {
       msg.reply = reply;
       saveMessages();
-      io.emit("messageUpdate", messages);
+      for(let s of io.sockets.sockets.values()){ if(s.isAdmin) s.emit("messageUpdate", messages); else if(s.guestId) s.emit("messageUpdate", messages.filter(m=>(m.guestId||"old")===s.guestId)); }
     }
   });
 
