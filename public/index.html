@@ -1095,7 +1095,7 @@ a.contact-row:hover .icon-chip{transform:scale(1.05)}
 
   /* ---------- Socket.IO (guarded) ---------- */
   var socket = null;
-  try { if (typeof io === 'function') socket = io(); } catch (err) { socket = null; }
+  try { if (typeof io === 'function') socket = io(); socket.on('connect', function(){ socket.emit('join', myGuestId); }); } catch (err) { socket = null; }
 
   function waLink(text) { return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(text); }
 
@@ -1112,7 +1112,7 @@ a.contact-row:hover .icon-chip{transform:scale(1.05)}
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setStatus('Please enter a valid email address.', true); return; }
 
     if (socket) {
-      socket.emit('userMessage', { name: name, email: email, phone: phone, message: message });
+      socket.emit('userMessage', { guestId: myGuestId, name: name, email: email, phone: phone, message: message });
       $('#message').value = '';
       setStatus('Message sent — I’ll reply shortly.');
     } else {
@@ -1128,7 +1128,7 @@ a.contact-row:hover .icon-chip{transform:scale(1.05)}
     var text = chatInput.value.trim();
     if (!text) return;
     if (socket) {
-      socket.emit('userMessage', { name: 'Guest', message: text });
+      socket.emit('userMessage', { guestId: myGuestId, name: 'Guest', message: text });
     } else {
       window.open(waLink(text), '_blank', 'noopener');
     }
