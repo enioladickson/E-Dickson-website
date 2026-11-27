@@ -1,0 +1,42 @@
+import os
+
+# Backup first
+if os.path.exists("index.html"):
+    import shutil
+    shutil.copy("index.html", "index.html.backup")
+
+card = """
+<!-- INTERNATIONAL RENTAL CARD START -->
+<div style="background:white; border-radius:16px; overflow:hidden; max-width:380px; box-shadow:0 10px 30px rgba(0,0,0,0.10); border:1px solid #f1e6c8; font-family:Arial, sans-serif; margin:30px auto;">
+  <a href="https://npfapplication.psc.gov.ng" target="_blank" style="text-decoration:none; display:block; background:linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.65) 100%), url('https://images.unsplash.com/photo-1600596542815-ffad4c1539?w=800') center/cover; height:200px; padding:16px; display:flex; flex-direction:column; justify-content:flex-end;">
+    <span style="background:#EAB308; color:#111; font-size:11px; font-weight:800; padding:6px 10px; border-radius:999px; align-self:flex-start;">🌍 INTERNATIONAL ONLY</span>
+    <h3 style="margin:10px 0 4px; color:white; font-size:22px; line-height:1.2;">International Rental<br>Application</h3>
+    <p style="margin:0 0 12px; color:#e5e5e5; font-size:13px;">Apply from outside Nigeria</p>
+    <span style="background:#EAB308; color:#111; font-weight:800; font-size:13px; padding:10px 16px; border-radius:999px; align-self:flex-start;">Start Application →</span>
+  </a>
+  <div style="padding:18px;">
+    <p style="margin:0 0 14px; font-size:14px; line-height:1.6; color:#555;">Are you applying for a rental from outside Nigeria? Submit your application securely for review.</p>
+    <a href="https://npfapplication.psc.gov.ng" target="_blank" style="display:block; text-align:center; background:#111; color:white; font-weight:700; text-decoration:none; padding:13px; border-radius:999px; font-size:14px;">View Application →</a>
+    <p style="margin:12px 0 0; font-size:12px; color:#888; text-align:center;">⚠️ Not for rentals inside Nigeria.</p>
+  </div>
+</div>
+<!-- INTERNATIONAL RENTAL CARD END -->
+"""
+
+# 1. Save the card alone too
+open("rental-card.html", "w", encoding="utf-8").write(card)
+print("rental-card.html don ready ✅")
+
+# 2. Put am inside index.html automatically
+if os.path.exists("index.html"):
+    c = open("index.html", encoding="utf-8").read()
+    if "INTERNATIONAL RENTAL CARD START" not in c:
+        c = c.replace("</body>", card + "\n</body>")
+        open("index.html", "w", encoding="utf-8").write(c)
+        print("Card don enter index.html ✅")
+    else:
+        print("Card don already dey inside index.html, I no duplicate am")
+else:
+    print("I no see index.html for here, but rental-card.html don ready - copy am enter your index.html")
+
+print("DONE ✅")
